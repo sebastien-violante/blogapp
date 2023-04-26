@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Article{% endblock %}
+
+{% block body %}
+    <h2 class="form-title">Rédiger un nouvel article</h2>
+    
+    {{ include('article/_form.html.twig') }}
+
+    <a href="{{ path('app_article_index') }}">back to list</a>
+{% endblock %}
+
+{% block javascripts %}
+{# Script to use select2 #}
+<script>
+    $(document).ready(function() {
+        $('.choices_categories').select2();
+    });
+</script>
+{# Script to use CKEditor #}
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#article_content' ) )
+        .then( editor => {
+                console.log( editor );
+        } )
+        .catch( error => {
+                console.error( error );
+        } );
+</script>
+{% endblock %}

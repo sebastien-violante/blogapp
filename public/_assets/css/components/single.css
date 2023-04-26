@@ -1,0 +1,18 @@
+.single-article .article-image {
+    height: 600px;
+    background-repeat: no-repeat;
+    margin: auto;
+    }
+
+.single-article .article-image img{
+    width: 100%;
+}
+
+.single-article .article-details {
+    padding: 20px 0;
+
+}
+
+.content {
+    text-align: justify;
+}

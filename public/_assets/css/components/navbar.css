@@ -1,0 +1,20 @@
+
+.navbar {
+    background-color: var(--main-color,0.1);
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 20px;
+    max-width: 1400px;
+    margin:auto;
+}
+
+.container-fluid {
+    background-color: var(--main-color,0.3);
+}
+
+.vertical-align {
+    line-height: 2em;
+    text-align: center;
+    margin: 0 !important;
+}

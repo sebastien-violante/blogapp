@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Selon Vous ? Les derniers articles{% endblock %}
+
+{% block body %}
+    <div class="top-home">
+        <h1>Selon Vous ?</h1>
+        <h3>Le blog qui vous laisse la parole...</h3>
+        <p>Sur ce site, vous pouvez écrire des articles à propos de sujets que vous maîtrisez, que vous voulez partager ou simplement
+        qui vous tiennent à coeur. Vous pouvez également  
+    </div>
+    <div class="articles-infos">
+        <strong>{{ articles|length }}</strong> articles disponibles
+    </div>
+    <div class="articles">
+    {% for article in articles %}
+        <a href="/article/{{ article.slug }}" class="article-item">
+            <div class="article-image">
+                <img src="{{ article.imageUrl }}" alt="Image de l'article" {{ article.title }} >
+            </div>
+            <div class="article-details flex">
+                <div class="article-author-details">
+                    <div class="article-author-picture">
+                        {% if article.author.profile is null %}
+                            <img src="/_assets/pictures/default_author.jpg" alt="Image de profile de {{ article.author.fullname }}">
+                        {% else %}
+                            <img src="{{ article.author.profile.picture }}" alt="Image de profile de {{ article.author.fullname }}">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="article-content-details">
+                    <h2 class="article-title">{{ article.title }}</h2>
+                    <div class="article-createdAt">{{ article.fromNow }}</div>
+
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h2 class="form-title">Formulaire de contact</h2>
+    {{ form_start(contactForm)}}
+        {% for label, messages in app.flashes(['success', 'danger']) %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}">{{ message }}</div>
+            {% endfor %}    
+        {% endfor %}
+        {{ form_label(contactForm.full_name)}}
+        {{ form_widget(contactForm.full_name)}}
+        {{ form_label(contactForm.email)}}
+        {{ form_widget(contactForm.email)}}
+        {{ form_label(contactForm.contactSubject)}}
+        {{ form_widget(contactForm.contactSubject)}}
+        {{ form_label(contactForm.message)}}
+        {{ form_widget(contactForm.message)}}
+    {{ form_end(contactForm)}}
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+.agreeTerm {
+    margin-top: 2em;
+}
+
+.form-control {
+    font-weight: bold;
+}
+
+.form-label {
+    margin-top:1em !important;
+    font-style: italic;
+}
+
+.form-title {
+    text-align: center;
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+.form-btn {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 1em ;
+}
+
+.mb-3 {
+    display: flex;
+    justify-content: center;
+}

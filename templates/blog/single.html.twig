@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SV | {{ article.title }} {% endblock %}
+
+{% block body %}
+    <div class="single-article">
+        <div class="article-image" style="background-image: url({{ article.imageUrl }})"></div>
+        <div class="article-details flex">
+                <div class="article-author-details">
+                    <div class="article-author-picture">
+                        {% if article.author.profile is null %}
+                            <img src="/_assets/pictures/default_author.jpg" alt="Image de profile de {{ article.author.fullname }}">
+                        {% else %}
+                            <img src="{{ article.author.profile.picture }}" alt="Image de profile de {{ article.author.fullname }}">
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="article-content-details">
+                    <h2 class="article-title">{{ article.title }}</h2>
+                    <div class="article-createdAt">{{ article.fromNow }}</div>
+                    <div class="article-categories">
+                        {% for category in article.categories %}
+                        <a 
+                            type="button" 
+                            class="btn btn-secondary position-relative"
+                            href="/category/{{ category.slug }}">
+                            {{ category.name }}
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                {{ category.articles|length}}
+                            </span>
+                        </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        <div class="content">
+            {# COMMENT ! the filter "raw" is necessary to interprete html tags. If absent, tags are displayed #}
+            {{ article.content | raw }}
+        </div>
+    </div>
+    
+{% endblock %}
