@@ -7,6 +7,8 @@ use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Service\UploadFile;
+use Doctrine\Common\Annotations\Annotation\Enum;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,6 +39,7 @@ class ArticleController extends AbstractController
     public function new(
         Request $request,
         ArticleRepository $articleRepository,
+        EntityManagerInterface $entityManagerInterface,
         ): Response
     {
         $article = new Article();
@@ -49,8 +52,9 @@ class ArticleController extends AbstractController
             $file_url = $this->uploadFile->save_file($file);
             $article->setImageUrl($file_url);
             $article->setAuthor($this->getUser());
-            $articleRepository->save($article, true);
-
+            $entityManagerInterface->persist($article);
+            $entityManagerInterface->flush();
+            
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,7 +73,12 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_article_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Article $article, ArticleRepository $articleRepository): Response
+    public function edit(
+        Request $request, 
+        Article $article, 
+        ArticleRepository $articleRepository,
+        EntityManagerInterface $entityManagerInterface,
+        ): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
@@ -81,8 +90,9 @@ class ArticleController extends AbstractController
                 $file_url = $this->uploadFile->update_file($file, $article->getImageUrl());
                 $article->setImageUrl($file_url);
             }
-            $articleRepository->save($article, true);
-
+            $entityManagerInterface->persist($article);
+            $entityManagerInterface->flush();
+            
             return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);
         }
 

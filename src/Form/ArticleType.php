@@ -31,14 +31,15 @@ class ArticleType extends AbstractType
                 ]
             ])
             ->add('imageFile', FileType::class, [
-                "label" => "Image à télécharger"
+                "label" => "Image à télécharger",
+                "required" => false,
             ])
             ->add("categories", EntityType::class, [
                 "label" => "Catégorie(s)",
                 "class" => Category::class,
                 "choice_label" => "name",
                 'multiple' => true,
-                'expanded' => false,
+                "by_reference" => false,
                 'attr' => [
                     'class' => 'choices_categories'
                 ]

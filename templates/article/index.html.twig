@@ -24,7 +24,7 @@
                 <td>{{ article.id }}</td>
                 <td>{{ article.title }}</td>
                 <td>{{ article.slug }}</td>
-                <td>{{ article.content }}</td>
+                <td>{{ article.content | raw }}</td>
                 <td>{{ article.imageUrl }}</td>
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>

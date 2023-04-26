@@ -24,7 +24,11 @@ class UploadFile extends AbstractController {
 
     public function update_file($file, $old_file) {
         $file_url = $this->save_file($file);
-        unlink($this->getParameter('replaced_image').$old_file);
+        try {
+            unlink($this->getParameter('replaced_image').$old_file);
+        } catch (\Throwable $th) {
+            
+        }
         return $file_url;
     }
 }
