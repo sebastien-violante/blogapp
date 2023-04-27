@@ -15,8 +15,8 @@
     <div class="articles">
     {% for article in articles %}
         <a href="/article/{{ article.slug }}" class="article-item">
-            <div class="article-image">
-                <img src="{{ article.imageUrl }}" alt="Image de l'article" {{ article.title }} >
+            <div class="article-image" style="background-image: url({{ article.imageUrl }})">
+                {# <img src="{{ article.imageUrl }}" alt="Image de l'article" {{ article.title }} > #}
             </div>
             <div class="article-details flex">
                 <div class="article-author-details">

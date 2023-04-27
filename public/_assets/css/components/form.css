@@ -27,3 +27,9 @@
     display: flex;
     justify-content: center;
 }
+
+form .image-preview img {
+    height: 150px;
+    width: auto;
+    padding: 1em;
+}

@@ -1,11 +1,13 @@
 .single-article .article-image {
-    height: 600px;
+    height: 400px;
     background-repeat: no-repeat;
-    margin: auto;
+    background-size:cover;
+    width: 100%;
     }
 
 .single-article .article-image img{
-    width: 100%;
+  
+    
 }
 
 .single-article .article-details {

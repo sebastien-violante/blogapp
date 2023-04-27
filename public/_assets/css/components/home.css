@@ -31,6 +31,7 @@
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     overflow: hidden;
+    background-size: cover;
 }
 
 .article-author-picture img{
@@ -49,6 +50,8 @@
 
 .flex {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .articles .article-item .article-title {

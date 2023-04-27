@@ -28,7 +28,7 @@ class Article
     private ?string $content = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $imageUrl = null;
+    private ?string $imageUrl = "/_assets/pictures/default-image.png";
 
     private ?string $imageFile = null;
 

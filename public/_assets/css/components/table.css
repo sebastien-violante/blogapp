@@ -1,0 +1,47 @@
+table {
+    border: 3px solid rgb(222, 215, 215) !important;
+}
+
+table td, table th {
+    border: 1px solid #ccc
+}
+
+table td img {
+    width:100%;
+    min-height: 250px; 
+}
+
+
+.header1, .header2, .header3 {
+    width: 30%;
+    min-width: 200px;
+}
+
+.btn-center {
+    display: flex;
+    justify-content: center;
+    border: none;
+}
+
+table td .article-content {
+    overflow:hidden;
+}
+
+.readmore {
+    color: var(--main-color);
+    font-weight: bold;
+    font-style: italic;
+    float: right;
+}
+
+.img-container {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.img-edit img {
+    max-width: 300px;
+    min-width: 200px;
+    width: auto;
+}

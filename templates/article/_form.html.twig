@@ -5,7 +5,26 @@
     {{ form_widget(form.categories) }}
     {{ form_label(form.content) }}
     {{ form_widget(form.content) }}
-    {{ form_label(form.imageFile) }}
-    {{ form_widget(form.imageFile) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="flex">
+        <div class="image-preview">
+            <img src="{{ article.imageUrl}}" alt="Image de l'article {{ article.title }}">
+        </div>
+        <div class="">
+            {% if required is defined  %}
+                {{ form_label(form.imageFile) }}
+                {{ form_widget(form.imageFile, {attr:{required:required}}) }}
+            {% else %}
+                {{ form_label(form.imageFile) }}
+                {{ form_widget(form.imageFile) }}
+            {% endif %}
+        </div> 
+    </div>
+    
+    
+    
+    <div class="flex">
+    <a class="btn btn-secondary w-25 m-2" href="{{ path('app_home') }}">Annuler</a>
+    <button class="btn btn-success w-25 m-2">{{ button_label|default('Save') }}</button>
+    </div>
 {{ form_end(form) }}
+

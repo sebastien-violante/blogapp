@@ -31,7 +31,7 @@ class ArticleType extends AbstractType
                 ]
             ])
             ->add('imageFile', FileType::class, [
-                "label" => "Image à télécharger",
+                "label" => "Télécharger une (autre) image",
                 "required" => false,
             ])
             ->add("categories", EntityType::class, [
@@ -39,7 +39,9 @@ class ArticleType extends AbstractType
                 "class" => Category::class,
                 "choice_label" => "name",
                 'multiple' => true,
+                /* Be carefull ! Add the attribute "by_reference" to be sure that data are stored in manty to many relation*/
                 "by_reference" => false,
+                /* End of comment */
                 'attr' => [
                     'class' => 'choices_categories'
                 ]

@@ -3,9 +3,11 @@
 {% block title %}SV | {{ article.title }} {% endblock %}
 
 {% block body %}
-    <div class="single-article">
-        <div class="article-image" style="background-image: url({{ article.imageUrl }})"></div>
-        <div class="article-details flex">
+
+    <div class="single-article-container">
+        <div class="single-article">
+            <div class="article-image" style="background-image: url({{ article.imageUrl }})"></div>
+            <div class="article-details flex">
                 <div class="article-author-details">
                     <div class="article-author-picture">
                         {% if article.author.profile is null %}
@@ -29,15 +31,31 @@
                                 {{ category.articles|length}}
                             </span>
                         </a>
-                            </div>
-                        {% endfor %}
                     </div>
+                        {% endfor %}
                 </div>
             </div>
-        <div class="content">
-            {# COMMENT ! the filter "raw" is necessary to interprete html tags. If absent, tags are displayed #}
-            {{ article.content | raw }}
+            <div class="content">
+                {# COMMENT ! the filter "raw" is necessary to interprete html tags. If absent, tags are displayed #}
+                {{ article.content | raw }}
+            </div>   
         </div>
+        {% if article.author is same as app.user %}
+                <a class="btn btn-secondary w-25" href="{{ path('app_article_edit', {'id': article.id}) }}">Modifier mon article</a>
+            {% endif %}  
+        <aside class="categories">
+            <ul>
+                <li><a href="">Catégorie 1</li>
+                <li><a href="">Catégorie 1</li>
+                <li><a href="">Catégorie 1</li>
+                <li><a href="">Catégorie 1</li>
+                <li><a href="">Catégorie 1</li>
+                <li><a href="">Catégorie 1</li>
+                <li><a href="">Catégorie 1</li>
+            </ul>
+        </aside>
+          
+    </div>
     </div>
     
 {% endblock %}
