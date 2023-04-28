@@ -3,14 +3,20 @@
 {% block title %}Selon Vous ? Les derniers articles{% endblock %}
 
 {% block body %}
-    <div class="top-home">
-        <h1>Selon Vous ?</h1>
-        <h3>Le blog qui vous laisse la parole...</h3>
-        <p>Sur ce site, vous pouvez écrire des articles à propos de sujets que vous maîtrisez, que vous voulez partager ou simplement
-        qui vous tiennent à coeur. Vous pouvez également  
+    <div class="top-home px-5">
+        <img class="image-front my-3" src="/_assets/pictures/title-front.png">
+        <h3 class="mb-5">Le blog qui vous laisse la parole...</h3>
+        {% if app.user %}
+            <h3>Bonjour {{ app.user.getFullName() }}</h3>
+        {% endif %}
+        <p class="intro">Sur ce site, vous pouvez écrire des articles à propos de sujets que vous maîtrisez, que vous voulez partager ou simplement
+        qui vous tiennent à coeur. Vous pouvez également réagir aux articles des autres auteurs et leur laisser un commentaire (bien sûr dans 
+        le respect des conditions générales d'utilisation du site que vous pouvez <strong><a href="">consulter  ici</a></strong>).
+        Besoin d'un petit coup de pouce pour utiliser ce site ? Pas de panique, tout est <strong><a href="">expliqué là !</a></strong>.</p>
     </div>
-    <div class="articles-infos">
-        <strong>{{ articles|length }}</strong> articles disponibles
+    
+    <div class="articles-infos my-5">
+       <h5>Au {{ "now"|date("d/m/Y") }}, <strong>{{ articles|length }} articles</strong> sont disponibles</h5>
     </div>
     <div class="articles">
     {% for article in articles %}
@@ -33,6 +39,12 @@
                     <div class="article-createdAt">{{ article.fromNow }}</div>
 
                 </div>
+            </div>
+            <div class="ranking ms-2">
+                <i class="bi bi-hand-thumbs-up mx-1"></i>
+                0
+                <i class="bi bi-hand-thumbs-down mx-1"></i>
+                8
             </div>
         </a>
     {% endfor %}

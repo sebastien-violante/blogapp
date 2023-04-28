@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\CommentRepository;
 use App\Service\CategoryService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,13 +31,16 @@ class BlogController extends AbstractController
     
     
     #[Route('/article/{slug}', name: 'app_single_article')]
-    public function single(ArticleRepository $articleRepository, string $slug): Response
+    public function single(
+        ArticleRepository $articleRepository,
+        string $slug,
+        CommentRepository $commentRepository): Response
     {
         $article = $articleRepository->findOneBySlug($slug);
         
         return $this->render('blog/single.html.twig', [
             'article' => $article,
-            
+            'comments' => $commentRepository->findByArticle($article)
         ]);
     }
 
