@@ -27,6 +27,9 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
 
+    #[ORM\Column]
+    private ?bool $quote = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -76,6 +79,18 @@ class Comment
     public function setArticle(?Article $article): self
     {
         $this->article = $article;
+
+        return $this;
+    }
+
+    public function isQuote(): ?bool
+    {
+        return $this->quote;
+    }
+
+    public function setQuote(bool $quote): self
+    {
+        $this->quote = $quote;
 
         return $this;
     }

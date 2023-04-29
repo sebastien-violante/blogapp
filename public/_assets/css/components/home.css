@@ -55,7 +55,7 @@ ul {
     list-style: none;
 }
 
-.articles.article-item .article-details {
+.articles .article-details .article-content-details {
     height: 82px;
 } 
 .articles .article-item .article-title {

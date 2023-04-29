@@ -4,12 +4,45 @@
     background-size:cover;
     width: 100%;
     border-radius: 1em;
+    position: relative;
     }
+
+.single-article .article-likes {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    width : 80px;
+    height: 80px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(252, 250, 90);
+    border-radius: 50px;
+    position: absolute;
+    top: 80%;
+    left : 5%;
+}  
 
 .single-article .article-details {
     padding: 20px 0;
 }
 
+.single-article .article-details .article-categories {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+}
 .content {
     text-align: justify;
+}
+
+.underligned {
+    height: 2em;
+    width: 2em;
+    border-radius: 1em;
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

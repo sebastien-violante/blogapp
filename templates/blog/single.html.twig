@@ -6,7 +6,12 @@
 
     <div class="single-article-container">
         <div class="single-article">
-            <div class="article-image" style="background-image: url({{ article.imageUrl }})"></div>
+            <div class="article-image" style="background-image: url({{ article.imageUrl }})">
+                {% if likeNumber != 0 %} 
+                    <div class="article-likes">Déjà {{ likeNumber }}<i class="bi bi-hand-thumbs-up mx-1"></i></div>
+                {% endif %}
+            </div>
+            
             <div class="article-details flex">
                 <div class="article-author-details mx-1">
                     <div class="article-author-picture">
@@ -51,6 +56,7 @@
             <div class="comment">
                 <h5>{{ comment.author }} a réagi le {{ comment.createdAt | date('d-m-Y à  H:i:s') }}</h5>
                 <p>{{ comment.content }} </p>
+                {% if comment.quote %}<i class="bi bi-hand-thumbs-up mx-1 underligned"></i>{% endif %}  
             </div>
         {% endfor %}
         </div>

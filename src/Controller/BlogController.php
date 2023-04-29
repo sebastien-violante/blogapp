@@ -21,11 +21,9 @@ class BlogController extends AbstractController
     public function home(Request $request, ArticleRepository $articleRepository): Response
     {
         $articles = $articleRepository->findAll();
-       
-       
+        
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,
-           //'categories' => $categories,
             ]);
     }
     
@@ -37,10 +35,16 @@ class BlogController extends AbstractController
         CommentRepository $commentRepository): Response
     {
         $article = $articleRepository->findOneBySlug($slug);
-        
+        $comments = $commentRepository->findByArticle($article);
+        $likeNumber = 0;
+        foreach ($comments as $comment) {
+            $likeNumber += $comment->isQuote();
+        }
         return $this->render('blog/single.html.twig', [
             'article' => $article,
-            'comments' => $commentRepository->findByArticle($article)
+            'comments' => $commentRepository->findByArticle($article),
+            'commentNumber' => count($commentRepository->findByArticle($article)),
+            'likeNumber' => $likeNumber,
         ]);
     }
 
