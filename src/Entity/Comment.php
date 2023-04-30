@@ -27,7 +27,7 @@ class Comment
     #[ORM\JoinColumn(nullable: false)]
     private ?Article $article = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?bool $quote = null;
 
     public function getId(): ?int

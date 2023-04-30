@@ -25,18 +25,12 @@ class CommentController extends AbstractController
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
-        
+                
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCreatedAt(new DateTimeImmutable());
-            
             $article = $articleRepository->findOneById($id);
-            
-            $likes = $article->getUp();
-            $likes++;
-            $article->setUp($likes);
-            
+            $comment->setArticle($article);
             $entityManagerInterface->persist($comment);
-            $entityManagerInterface->persist($article);
             $entityManagerInterface->flush();
             
             return $this->redirectToRoute('app_home');

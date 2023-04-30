@@ -66,7 +66,7 @@
             </div>
         {% else %}
             <div class="flex justify-center m-3">
-                <a class="btn btn-danger w-25" href="{{ path('app_article_edit', {'id': article.id}) }}">Réagir</a>
+                <a class="btn btn-danger w-25" href="{{ path('app_comment', {'id': article.id}) }}">Réagir</a>
             </div>
         {% endif %}  
         <aside class="categories">

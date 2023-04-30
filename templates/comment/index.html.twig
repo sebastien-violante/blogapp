@@ -3,6 +3,20 @@
 {% block title %}Hello CommentController!{% endblock %}
 
 {% block body %}
+<h2 class="form-title">Votre commentaire</h2>
+<div class="m-4">
 {{ form_start(form) }}
+    {{ form_label(form.author)}}
+    {{ form_widget(form.author)}}
+    {{ form_label(form.content)}}
+    {{ form_widget(form.content)}}
+    <div class="m-3 flex justify-center">
+        {{ form_label(form.quote)}}
+        {{ form_widget(form.quote)}}
+        <div style="position:relative">
+        <i style="font-size: 2em" class="bi bi-hand-thumbs-up mx-1 moving-like"></i>
+        </div>
+    </div>
 {{ form_end(form) }}
+</div>
 {% endblock %}

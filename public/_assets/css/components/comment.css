@@ -17,8 +17,18 @@
 }
 
 .comment-container .comment i{
-   position: absolute;
-   top: 10%;
-   left: 95%;
-   color: green:
+    position: absolute;
+    top: 10%;
+    left: 95%;
+    color: green:
+}
+
+.moving-like {
+    position: absolute;
+    animation: bounce 0.8s ease infinite;
+}
+@keyframes bounce {
+    from {top: -0.8em;}
+    50%  {top: -0.5em;}
+    to   {top: -0.8em;}
 }
