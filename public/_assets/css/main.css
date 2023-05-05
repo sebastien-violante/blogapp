@@ -1,4 +1,5 @@
 @import url("/_assets/css/libraries/select2.css");
+@import url("/_assets/css/components/errorstyle.css");
 @import url("/_assets/css/components/home.css");
 @import url("/_assets/css/components/index.css");
 @import url("/_assets/css/components/colors.css");
@@ -8,3 +9,4 @@
 @import url("/_assets/css/components/editor.css");
 @import url("/_assets/css/components/table.css");
 @import url("/_assets/css/components/comment.css");
+@import url("/_assets/css/components/login.css");

@@ -6,7 +6,7 @@ use DateTimeImmutable;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
-use App\Service\UploadFile;
+use App\Service\ManageFile;
 use Doctrine\Common\Annotations\Annotation\Enum;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,10 +17,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/account')]
 class ArticleController extends AbstractController
 {
-    private $uploadFile;
+    private $File;
 
-    public function __construct(UploadFile $uploadFile) {
-        $this->uploadFile = $uploadFile;
+    public function __construct(ManageFile $manageFile) {
+        $this->manageFile = $manageFile;
     }
         
     #[Route('/', name: 'app_article_index', methods: ['GET'])]
@@ -49,7 +49,7 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setCreatedAt(new DateTimeImmutable());
             $file = $form['imageFile']->getData();
-            $file_url = $this->uploadFile->save_file($file);
+            $file_url = $this->manageFile->save_file($file);
             $article->setImageUrl($file_url);
             $article->setAuthor($this->getUser());
             $entityManagerInterface->persist($article);
@@ -87,7 +87,7 @@ class ArticleController extends AbstractController
             $article->setUpdatedAt(new DateTimeImmutable());
             $file = $form['imageFile']->getData();
             if ($file) {
-                $file_url = $this->uploadFile->update_file($file, $article->getImageUrl());
+                $file_url = $this->manageFile->update_file($file, $article->getImageUrl());
                 $article->setImageUrl($file_url);
             }
             $entityManagerInterface->persist($article);
@@ -108,7 +108,10 @@ class ArticleController extends AbstractController
     public function delete(Request $request, Article $article, ArticleRepository $articleRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
+            // $iamgeUrl is the url of the picture to delete with the article
+            $imageUrl = $article->getImageUrl();
             $articleRepository->remove($article, true);
+            $this->manageFile->remove_file($imageUrl);
         }
 
         return $this->redirectToRoute('app_article_index', [], Response::HTTP_SEE_OTHER);

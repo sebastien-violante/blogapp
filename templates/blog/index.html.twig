@@ -3,10 +3,14 @@
 {% block title %}Selon Vous ? Les derniers articles{% endblock %}
 
 {% block body %}
-    <div class="top-home px-5">
-        <img class="image-front my-3" src="/_assets/pictures/title-front.png">
-        <h3 class="mb-4">Le blog qui vous laisse la parole...</h3>
+    <div class="top-home">
+        <img class="top-picture" src="/_assets/pictures/top-picture.jpg">
+        {# <img class="image-front my-3" src="/_assets/pictures/selonvous.png"> #}
+       {#  <p style="color:#95d1b5;font-size:4em">🆂🅴🅻🅾🅽 🆅🅾🆄🆂 ?</p> #}
+        <p style="color:#95d1b5;font-size:3em">🆂elon 🆅ous ?</p>
+        <h4 class="mb-4"><strong>Le blog qui vous laisse la 🅿🅰🆁🅾🅻🅴...</strong></h4>
         {% if app.user %}
+        
             <h3>Bonjour {{ app.user.getFullName() }}</h3>
         {% endif %}
         <p class="intro mt-3">Sur ce site, vous pouvez écrire des articles à propos de sujets que vous maîtrisez, que vous voulez partager ou simplement
@@ -21,8 +25,8 @@
     <div class="articles">
     {% for article in articles %}
         <a href="/article/{{ article.slug }}" class="article-item">
-            <div class="article-image" style="background-image: url({{ article.imageUrl }})">
-                {# <img src="{{ article.imageUrl }}" alt="Image de l'article" {{ article.title }} > #}
+            <div style="overflow:hidden; display:flex; align-items:center; justify-content:center" class="article-image">
+                <img src="{{ article.imageUrl }}">
             </div>
             <div class="article-details flex">
                 <div class="article-author-details">
@@ -40,14 +44,24 @@
 
                 </div>
             </div>
-            <div class="ranking ms-2">
+            
             {% if article.comments|length != 0 %}
-                {{article.comments|length }} <i class="bi bi-chat-text ml-1"></i>
+                <div class="corner">
+                    <div class="ranking ms-2">
+                        {{article.comments|length }} <i class="bi bi-chat-text ml-1"></i>
+                    </div>
+                </div>
             {% endif %}
             
-            </div>
         </a>
     {% endfor %}
     </div>
-    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+$("img").on("error", function() {
+    $(this).attr("src", "/_assets/pictures/default_image.jpg");
+})
+</script>
 {% endblock %}
+

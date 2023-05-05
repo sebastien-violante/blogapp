@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Selon vous ?</a>
+    <h2 style="color:white;position:absolute;top:0.5em;left:1em; font-size:2em">🆂🆅</h2>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,11 +17,19 @@
             {% for category in app.session.get("categories") %}
               <li><a class="dropdown-item" href="/category/{{ category.slug }}">{{ category.name }} ({{ category.articles|length }} art.)</a></li>
             {% endfor %}
+            {% if app.user.roles is defined and app.user.roles is not null %}
+              {% if "AUTHOR" in app.user.roles %}
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href=""><strong>Modifier</strong></a></li>
+            {% endif %}
+            {% endif %}
+            
+           
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link">A propos</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ path('app_about')}}">A propos</a></li>
         <li class="nav-item"><a class="nav-link" href="/contact" >Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ path('app_register')}}" >Enregistrement</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ path('app_cgu')}}" >CGU</a></li>
         
           {% if app.user %}
         <li class="nav-item"><a class="nav-link"href="{{ path('app_logout')}}" >Mon compte</a></li>
@@ -31,8 +39,8 @@
           {% endif %}
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+        <button class="btn btn-outline-success btn-search" type="submit">Chercher</button>
       </form>
     </div>
   </div>

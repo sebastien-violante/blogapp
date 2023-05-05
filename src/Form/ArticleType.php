@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ArticleType extends AbstractType
 {
@@ -23,12 +24,17 @@ class ArticleType extends AbstractType
             ])
             ->add('content', TextareaType::class, [
                 "label" => "Contenu",
-                /* Be carefull ! Because of use of CKEditor, need to declare this field not required */
-                "required" => false,
+                /* Be carefull ! Because of use of CKEditor, need to declare this field not required/ but changed at the end of the course (session 102) */
+                "required" => true,
                 /* End of comment */
                 "attr" => [
                     "rows" => 20,
-                ]
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Vous devez saisir un contenu pour votre article',
+                    ]),
+                ],
             ])
             ->add('imageFile', FileType::class, [
                 "label" => "Télécharger une (autre) image",

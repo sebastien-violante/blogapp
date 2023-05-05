@@ -4,7 +4,7 @@ namespace App\Service;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class UploadFile extends AbstractController {
+class ManageFile extends AbstractController {
 
     public function name_generator($length) {
         $code = "abcdefghijklmnopqrstuvwxyz0123456789";
@@ -30,5 +30,14 @@ class UploadFile extends AbstractController {
             
         }
         return $file_url;
+    }
+
+    public function remove_file($file_url) {
+        try {
+            unlink($this->getParameter('replaced_image').$file_url);
+            return true;
+        } catch (\Throwable $th) {
+            return false;
+        }   
     }
 }

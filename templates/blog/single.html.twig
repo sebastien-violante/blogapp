@@ -6,7 +6,8 @@
 
     <div class="single-article-container">
         <div class="single-article">
-            <div class="article-image" style="background-image: url({{ article.imageUrl }})">
+            <div style="overflow:hidden; display:flex; align-items:center; justify-content:center" class="article-image">
+                <img style="width: 100%" src="{{ article.imageUrl }}">
                 {% if likeNumber != 0 %} 
                     <div class="article-likes">Déjà {{ likeNumber }}<i class="bi bi-hand-thumbs-up mx-1"></i></div>
                 {% endif %}
@@ -51,15 +52,18 @@
             </div>
                
         </div>
-        <div class="comment-container">
-        {% for comment in comments %}
-            <div class="comment">
-                <h5>{{ comment.author }} a réagi le {{ comment.createdAt | date('d-m-Y à  H:i:s') }}</h5>
-                <p>{{ comment.content }} </p>
-                {% if comment.quote %}<i class="bi bi-hand-thumbs-up mx-1 underligned"></i>{% endif %}  
+        {% if comments|length > 0 %}
+            <div class="comment-container">
+                {% for comment in comments %}
+                    <div class="comment">
+                        <h5>{{ comment.author }} a réagi le {{ comment.createdAt | date('d-m-Y à  H:i:s') }}</h5>
+                        <p>{{ comment.content }} </p>
+                        {% if comment.quote %}<i class="bi bi-hand-thumbs-up mx-1 underligned"></i>{% endif %}  
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-        </div>
+            {% endif %}
+        
         {% if article.author is same as app.user %}
             <div class="flex justify-center m-3">
                 <a class="btn btn-secondary w-25" href="{{ path('app_article_edit', {'id': article.id}) }}">Modifier mon article</a>
@@ -80,4 +84,10 @@
     </div>
     </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+$("img").on("error", function() {
+    $(this).attr("src", "/_assets/pictures/default_image.jpg");
+})
+</script>
 {% endblock %}

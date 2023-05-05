@@ -1,16 +1,19 @@
 
 .navbar {
-    background-color: var(--main-color,0.1);
+    background-color: var(--main-color);
     display: flex;
     align-items: center;
     padding-left: 40px;
     padding-right: 20px;
     max-width: 1400px;
     margin:auto;
-}
+    color: #1f1e1e !important;
+    height: 4em;
+} 
 
 .container-fluid {
-    background-color: var(--main-color,0.3);
+    background-color: var(--main-color);
+    margin-left: 4em;
 }
 
 .vertical-align {
@@ -18,3 +21,52 @@
     text-align: center;
     margin: 0 !important;
 }
+
+.nav-link {
+    color: #1f1e1e !important;
+}
+
+.nav-item {
+    margin: 0 1em;
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.logo {
+    height: 40px;
+    margin: 0.5em;
+}
+
+.footer {
+    background: var(--main-color);
+    min-height: 50px;
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer a {
+    margin: 0 2em;
+}
+
+.footer a:hover {
+    border-bottom: 1px solid black;
+}
+
+.collapse .navbar-collapse {
+    margin-left: 8em;
+}
+
+.btn-search {
+    width: 90px !important;
+    min-width: 90px !important;
+}
+

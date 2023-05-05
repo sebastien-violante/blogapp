@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SV ? Vous n'y êtes pour rien){% endblock %}
+
+{% block body %}
+    <div class="blanckpage">
+    <img src="/_assets/pictures/picture-other-errors.jpg" alt="">
+        <div class="content">
+                <h3>Oups ! On dirait que notre site rencontre un problème</h3>
+                <p class="mt-2">
+                    On répare cela au plus vite. En attendant, retournez plutôt à : <a href="{{ path('app_home') }}">la page d'accueil</a>
+                </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+.blanckpage  {
+   width: 100%;
+   height: 100vh;
+   border-radius:1em;
+   position: relative;
+}
+
+.blanckpage img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.blanckpage .content {
+   background: var(--main-color);
+   position: absolute;
+   top: 8em;
+   left: 1em;
+   margin-right: 1em;
+   padding: 2em;
+   border-radius: 0.3em;
+}

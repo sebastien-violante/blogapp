@@ -6,8 +6,10 @@
 <h2 class="form-title">Votre commentaire</h2>
 <div class="m-4">
 {{ form_start(form) }}
+    {{ form_errors(form.author)}}
     {{ form_label(form.author)}}
     {{ form_widget(form.author)}}
+    {{ form_errors(form.content)}}
     {{ form_label(form.content)}}
     {{ form_widget(form.content)}}
     <div class="m-3 flex justify-center">

@@ -20,7 +20,8 @@ class BlogController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function home(Request $request, ArticleRepository $articleRepository): Response
     {
-        $articles = $articleRepository->findAll();
+        // The findBy with the first null array allows to retrieve all the items and to sort them according to the creation date
+        $articles = $articleRepository->findBy([], ['createdAt' => 'DESC']);
         
         return $this->render('blog/index.html.twig', [
             'articles' => $articles,

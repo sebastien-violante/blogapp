@@ -21,3 +21,6 @@ https://cdnjs.com/libraries/Readmore.js/2.0.2
 
 Package to use the Twig sort by field
 composer require snilius/twig-sort-by-field
+
+Package to custom error pages
+composer require symfony/twig-pack

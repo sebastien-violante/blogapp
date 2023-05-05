@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SV ? Vous êtes perdu(e){% endblock %}
+
+{% block body %}
+    <div class="blanckpage">
+    <img src="/_assets/pictures/desert.jpg" alt="">
+        <div class="content">
+                <h3>Oups ! On dirait que vous êtes seul(e) ici...</h3>
+                <p class="mt-2">
+                    Cette page n'existe pas. Retournez plutôt à : <a href="{{ path('app_home') }}">la page d'accueil</a>
+                </p>
+        </div>
+    </div>
+{% endblock %}

@@ -7,58 +7,7 @@
 
     <a class="btn btn-success mb-2 w-25" href="{{ path('app_article_new') }}">Rédiger un nouvel article</a>
     {% for article in articles %}
-{#     <table class="table">
-       <thead>
-            <tr>
-                <th class="header1" >N°</th>
-                <th class="header2" >Titre</th>
-                <th class="header3" >Référencement</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.title }}</th>
-                <td>{{ article.slug }}</th>
-            </tr>
-        </tbody>
-        <thead>
-            <tr>
-                <th class="header1" colspan="2">Contenu</th>
-                <th class="header1" colspan="1">Image</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td colspan="2">
-                    <div class="article-content">
-                        {{ article.content | raw }}
-                    </div>
-                </td>
-                <td colspan="1">
-                    <div class="img-container">
-                        <img style="overflow:hidden" src="{{ article.imageUrl }}" alt="image de l'article numero {{ article.id }}">
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-        <thead>
-            <tr>
-                <th class="header1">Ecrit le</th>
-                <th class="header1">Modifié le</th>
-                <th class="btn-center"><a class="btn btn-primary w-50" href="{{ path('app_article_show', {'id': article.id}) }}">Visualiser</a></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ article.createdAt ? article.createdAt|date('d-m-Y à H:i:s') : '' }}</td>
-                <td>{{ article.updatedAt ? article.updatedAt|date('d-m-Y à H:i:s') : ''  }}</td>
-                <td class="btn-center"><a class="btn btn-warning w-50" href="{{ path('app_article_edit', {'id': article.id}) }}">Modifier</a></td>
-                
-            </tr>
-        </tbody>
-    </table> #}
-    
+
     
     <table class="table">
         <tbody>
