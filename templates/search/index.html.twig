@@ -1,23 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ parent() }} Accueil{% endblock %}
+{% block title %}{{ parent() }} Vos résultats{% endblock %}
 
 {% block body %}
     <div class="top-home">
-        <img 
-        class="top-picture" 
-        src="/_assets/pictures/top-picture.jpg"
-        alt="image d'une main portant un stylo pour symboliser le but du blog">
-        <p style="color:#95d1b5;font-size:3em">🆂elon 🆅ous ?</p>
-        <h4 class="mb-4"><strong>Le blog qui vous laisse la 🅿🅰🆁🅾🅻🅴...</strong></h4>
-        {% if app.user %}
-        
-            <h3>Bonjour {{ app.user.getFullName() }}</h3>
-        {% endif %}
-        <p class="intro mt-3">Sur ce site, vous pouvez écrire des articles à propos de sujets que vous maîtrisez, que vous voulez partager ou simplement
-        qui vous tiennent à coeur. Vous pouvez également réagir aux articles des autres auteurs et leur laisser un commentaire (bien sûr dans 
-        le respect des conditions générales d'utilisation du site que vous pouvez <strong><a href="">consulter  ici</a></strong>).
-        Besoin d'un petit coup de pouce pour utiliser ce site ? Pas de panique, tout est <strong><a href="">expliqué là !</a></strong>.</p>
+        <h5 class="mb-4">Voici tous les articles relatifs à <strong><i>{{ wordToSearch }}</i></strong></h5>
     </div>
     
     <div class="articles-infos my-5">
@@ -27,21 +14,15 @@
     {% for article in articles %}
         <a href="/article/{{ article.slug }}" class="article-item">
             <div style="overflow:hidden; display:flex; align-items:center; justify-content:center" class="article-image">
-                <img 
-                src="{{ article.imageUrl }}"
-                alt="image de l'article {{ article.title }}">
+                <img src="{{ article.imageUrl }}" alt="image de l'article {{ article.title }}">
             </div>
             <div class="article-details flex">
                 <div class="article-author-details">
                     <div class="article-author-picture">
                         {% if article.author.profile is null %}
-                            <img 
-                            src="/_assets/pictures/default_author.jpg" 
-                            alt="Image de profile de {{ article.author.fullname }}">
+                            <img src="/_assets/pictures/default_author.jpg" alt="Image de profile de {{ article.author.fullname }}">
                         {% else %}
-                            <img 
-                            src="{{ article.author.profile.picture }}" 
-                            alt="Image de profile de {{ article.author.fullname }}">
+                            <img src="{{ article.author.profile.picture }}" alt="Image de profile de {{ article.author.fullname }}">
                         {% endif %}
                     </div>
                 </div>
@@ -71,4 +52,5 @@ $("img").on("error", function() {
 })
 </script>
 {% endblock %}
+
 

@@ -1,0 +1,14 @@
+.modal-title-article {
+    font-size: 1.2em;
+    text-decoration:underline;
+}
+
+.modal-article-content {
+    margin: 0.5em;
+    padding: 0.5em;
+    text-align: justify;
+}
+
+.modal {
+    background: rgba(149, 209, 188, 0.1);
+}

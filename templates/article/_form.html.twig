@@ -7,7 +7,9 @@
     {{ form_widget(form.content) }}
     <div class="flex">
         <div class="image-preview">
-            <img src="{{ article.imageUrl}}" alt="Image de l'article {{ article.title }}">
+            <img 
+            src="{{ article.imageUrl}}" 
+            alt="Image de l'article {{ article.title }}">
         </div>
         <div class="">
             {% if required is defined  %}

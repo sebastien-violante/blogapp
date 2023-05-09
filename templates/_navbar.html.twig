@@ -23,25 +23,32 @@
               <li><a class="dropdown-item" href=""><strong>Modifier</strong></a></li>
             {% endif %}
             {% endif %}
-            
-           
-          </ul>
+        </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="{{ path('app_about')}}">A propos</a></li>
         <li class="nav-item"><a class="nav-link" href="/contact" >Contact</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ path('app_cgu')}}" >CGU</a></li>
-        
-          {% if app.user %}
-        <li class="nav-item"><a class="nav-link"href="{{ path('app_logout')}}" >Mon compte</a></li>
-        <li class="nav-item"><a class="nav-link"href="{{ path('app_logout')}}" >Déconnexion</a></li>
-          {% else %}
-        <li class="nav-item"><a class="nav-link"href="{{ path('app_login')}}" >Connexion</a></li>    
-          {% endif %}
+        {% if app.user %}
+          <li class="nav-item"><a class="nav-link"href="{{ path('app_article_index')}}" >Mes articles</a></li>
+          <li class="nav-item"><a class="nav-link"href="{{ path('app_logout')}}" ><strong>Déconnexion</strong></a></li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link"href="{{ path('app_login')}}" ><strong>Connexion</strong></a></li>    
+        {% endif %}
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="..." aria-label="Search">
+
+
+
+
+
+      <form class="d-flex" role="search" action="/search" method="POST">
+        <input class="form-control me-2" type="search" id="word-to-search" name="word-to-search" placeholder="..." aria-label="Search">
         <button class="btn btn-outline-success btn-search" type="submit">Chercher</button>
       </form>
+
+
+
+
+
+
     </div>
   </div>
 </nav>

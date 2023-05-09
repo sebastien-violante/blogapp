@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}SV | {{ article.title }} {% endblock %}
+{% block title %}{{ parent() }} {{ article.title }} {% endblock %}
 
 {% block body %}
 
     <div class="single-article-container">
         <div class="single-article">
             <div style="overflow:hidden; display:flex; align-items:center; justify-content:center" class="article-image">
-                <img style="width: 100%" src="{{ article.imageUrl }}">
+                <img style="width: 100%" src="{{ article.imageUrl }}" alt="image de l'article {{ article.title }}">
                 {% if likeNumber != 0 %} 
                     <div class="article-likes">Déjà {{ likeNumber }}<i class="bi bi-hand-thumbs-up mx-1"></i></div>
                 {% endif %}
@@ -24,7 +24,9 @@
                             data-bs-content="{{ article.author.getFullName }}"
                             >
                         {% else %}
-                            <img src="{{ article.author.profile.picture }}" alt="Image de profile de {{ article.author.fullname }}">
+                            <img 
+                            src="{{ article.author.profile.picture }}" 
+                            alt="Image de profile de {{ article.author.fullname }}">
                         {% endif %}
                     </div>
                 </div>

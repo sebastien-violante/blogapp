@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Article index{% endblock %}
+{% block title %}{{ parent() }} Mes articles{% endblock %}
 
 {% block body %}
     <h2 class="form-title">Liste des vos articles</h2>
@@ -25,13 +25,15 @@
             </tr>
             <tr>
                 <th>Contenu</th>
-                <td>{{ article.content }}</td>
+                <td>{{ article.content | raw }}</td>
             </tr>
             <tr>
                 <th>Image</th>
                 <td>
                     <div class="img-edit">
-                        <img src="{{ article.imageUrl }}" alt="image de l'article numero {{ article.id }}">
+                        <img 
+                        src="{{ article.imageUrl }}" 
+                        alt="image de l'article numero {{ article.id }}">
                     </div></td>
             </tr>
             <tr>
