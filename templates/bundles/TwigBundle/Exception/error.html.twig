@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} Vous n'y êtes pour rien){% endblock %}
+{% block title %}{{ parent() }} Vous n'y êtes pour rien{% endblock %}
 
 {% block body %}
-    <div class="blanckpage">
+  <div class="blanckpage">
     <img src="/_assets/pictures/picture-other-errors.jpg" alt="image de maison détruite indiquant un problème sur le site">
         <div class="content">
-                <h3>Oups ! On dirait que notre site rencontre un problème</h3>
-                <p class="mt-2">
-                    On répare cela au plus vite. En attendant, retournez plutôt à : <a href="{{ path('app_home') }}">la page d'accueil</a>
-                </p>
+            <h3>Oups ! On dirait que notre site rencontre un problème</h3>
+            <p class="mt-2">
+                On répare cela au plus vite. En attendant, retournez plutôt à : <strong><a href="{{ path('app_home') }}">la page d'accueil</a></strong>
+            </p>
         </div>
-    </div>
+   </div>
 {% endblock %}

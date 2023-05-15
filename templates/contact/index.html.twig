@@ -3,10 +3,8 @@
 {% block title %} {{ parent() }} Écrivez nous !{% endblock %}
 
 {% block body %}
-
-
-<div class="example-wrapper">
     <h2 class="form-title">Formulaire de contact</h2>
+    <div class="ajusted-form">
     {{ form_start(contactForm)}}
         {% for label, messages in app.flashes(['success', 'danger']) %}
             {% for message in messages %}
@@ -22,5 +20,5 @@
         {{ form_label(contactForm.message)}}
         {{ form_widget(contactForm.message)}}
     {{ form_end(contactForm)}}
-</div>
+    </div>
 {% endblock %}

@@ -6,44 +6,38 @@
     <h2 class="form-title">Rédiger un nouvel article</h2>
     {# Add parameter required to help the template to decided if the image is required (new article) or not (update article) #}
     {{ include('article/_form.html.twig', {required: "required"}) }}
-
-    <a href="{{ path('app_article_index') }}">back to list</a>
-   
 {% endblock %}
 
 {% block javascripts %}
-{# Script to use select2 #}
-<script>
-
-    $(document).ready(function() {
-        $('.choices_categories').select2();
-
-        {# Script to display new image just after its choice #}
-        $("input[type='file']").change(function() {
-        var file = $(this).get(0).files[0];
-        if(file) {
-            var reader = new FileReader();
-            reader.onload = function() {
-                var img = `<img src='${reader.result}'/>`;
-                $(".image-preview").html(img);
+    {# Script to use select2 #}
+    <script>
+        $(document).ready(function() {
+            $('.choices_categories').select2();
+            $("input[type='file']").change(function() {
+            var file = $(this).get(0).files[0];
+            if(file) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var img = `<img src='${reader.result}'/>`;
+                    $(".image-preview").html(img);
+                }
+                reader.readAsDataURL(file)
             }
-            reader.readAsDataURL(file)
-        }
+            });
+            {# thanks to the following line, the text area is not required anymore #}
+            $("textarea").removeAttr("required");
         });
-        {# thanks to the following line, the text area is not required anymore #}
-        $("textarea").removeAttr("required");
-    });
-</script>
-{# Script to use CKEditor #}
-<script>
-    ClassicEditor
-        .create( document.querySelector( '#article_content' ) )
-        .then( editor => {
-                console.log( editor );
-        } )
-        .catch( error => {
-                console.error( error );
-        } );
-</script>
+    </script>
+    {# Script to use CKEditor #}
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#article_content' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
+    </script>
 
 {% endblock %}

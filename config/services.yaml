@@ -8,6 +8,10 @@ parameters:
     image_dir: '%kernel.project_dir%/public/_assets/pictures/articles'
     #parameter made to indicate the path to an image to replace when editing an article
     replaced_image: '%kernel.project_dir%/public/'
+    #parameters for mailing
+    MAIL_BLOG: '%env(MAIL_BLOG)%'
+    MAIL_ADMIN: '%env(MAIL_ADMIN)%'
+    
 services:
     # default configuration for services in *this* file
     _defaults:

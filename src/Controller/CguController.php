@@ -8,11 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CguController extends AbstractController
 {
+    // The generalConditions method allows to display general conditions of the site before registration
     #[Route('/cgu', name: 'app_cgu')]
-    public function index(): Response
+    public function generalConditions(): Response
     {
-        return $this->render('cgu/index.html.twig', [
-            'controller_name' => 'CguController',
-        ]);
+        return $this->render('cgu/index.html.twig');
     }
 }

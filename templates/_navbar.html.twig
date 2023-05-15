@@ -1,54 +1,55 @@
 <nav class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
   <div class="container-fluid">
-    <h2 style="color:white;position:absolute;top:0.5em;left:1em; font-size:2em">🆂🆅</h2>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <img 
+    class="logo" 
+    src="/_assets/pictures/logo.png"
+    alt="Logo du site">
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Catégories
-          </a>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catégories</a>
           <ul class="dropdown-menu">
             {% for category in app.session.get("categories") %}
               <li><a class="dropdown-item" href="/category/{{ category.slug }}">{{ category.name }} ({{ category.articles|length }} art.)</a></li>
             {% endfor %}
             {% if app.user.roles is defined and app.user.roles is not null %}
-              {% if "AUTHOR" in app.user.roles %}
+              {% if "ADM" in app.user.roles %}
               <div class="dropdown-divider"></div>
-              <li><a class="dropdown-item" href=""><strong>Modifier</strong></a></li>
+              <li><a class="dropdown-item" href="/category"><strong>Modifier</strong></a></li>
+            {% endif %}
+            {% endif %}
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="{{ path('app_about')}}">A propos</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact</a>
+          <ul class="dropdown-menu">
+            <li class="nav-item"><a class="nav-link" href="/contact" >Par formulaire</a></li>
+              {% if app.user.roles is defined and app.user.roles is not null %}
+              {% if "ADM" in app.user.roles %}
+              <div class="dropdown-divider"></div>
+              <li><a class="dropdown-item" href="{{ path('app_contact_list')}}"><strong>Gérer les contacts</strong></a></li>
             {% endif %}
             {% endif %}
         </ul>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="{{ path('app_about')}}">A propos</a></li>
-        <li class="nav-item"><a class="nav-link" href="/contact" >Contact</a></li>
         {% if app.user %}
           <li class="nav-item"><a class="nav-link"href="{{ path('app_article_index')}}" >Mes articles</a></li>
+          <li class="nav-item"><a class="nav-link"href="{{ path('app_profile')}}" >Mon profil</a></li>
           <li class="nav-item"><a class="nav-link"href="{{ path('app_logout')}}" ><strong>Déconnexion</strong></a></li>
         {% else %}
           <li class="nav-item"><a class="nav-link"href="{{ path('app_login')}}" ><strong>Connexion</strong></a></li>    
         {% endif %}
       </ul>
-
-
-
-
-
-      <form class="d-flex" role="search" action="/search" method="POST">
+      <form class="form-navbar d-flex" role="search" action="/search" method="POST">
         <input class="form-control me-2" type="search" id="word-to-search" name="word-to-search" placeholder="..." aria-label="Search">
         <button class="btn btn-outline-success btn-search" type="submit">Chercher</button>
       </form>
-
-
-
-
-
-
     </div>
   </div>
 </nav>

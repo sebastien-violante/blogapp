@@ -6,13 +6,12 @@
     <div class="top-home">
         <h5 class="mb-4">Voici tous les articles relatifs à <strong><i>{{ wordToSearch }}</i></strong></h5>
     </div>
-    
     <div class="articles-infos my-5">
-       <h5>Au {{ "now"|date("d/m/Y") }}, <strong>{{ articles|length }} articles</strong> sont disponibles</h5>
+        <h5>Au {{ "now"|date("d/m/Y") }}, <strong>{{ articles|length }} articles</strong> sont disponibles</h5>
     </div>
     <div class="articles">
-    {% for article in articles %}
-        <a href="/article/{{ article.slug }}" class="article-item">
+        {% for article in articles %}
+            <a href="/article/{{ article.slug }}" class="article-item">
             <div style="overflow:hidden; display:flex; align-items:center; justify-content:center" class="article-image">
                 <img src="{{ article.imageUrl }}" alt="image de l'article {{ article.title }}">
             </div>
@@ -29,10 +28,8 @@
                 <div class="article-content-details">
                     <h2 class="article-title">{{ article.title }}</h2>
                     <div class="article-createdAt">{{ article.fromNow }}</div>
-
                 </div>
             </div>
-            
             {% if article.comments|length != 0 %}
                 <div class="corner">
                     <div class="ranking ms-2">
@@ -40,17 +37,18 @@
                     </div>
                 </div>
             {% endif %}
-            
-        </a>
-    {% endfor %}
+            </a>
+        {% endfor %}
     </div>
+{% endblock %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-$("img").on("error", function() {
-    $(this).attr("src", "/_assets/pictures/default_image.jpg");
-})
-</script>
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+    $("img").on("error", function() {
+        $(this).attr("src", "/_assets/pictures/default_image.jpg");
+    })
+    </script>
 {% endblock %}
 
 

@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} Les contacts{% endblock %}
+
+{% block body %}
+<div class="ajusted-form">
+    {% for contact in contacts | sort((a,b) => b.createdAt <=> a.createdAt) %}
+        <div class="card my-2">
+            <div class="card-header">
+                {{ contact.createdAt | date("d/m/Y à h:m")}}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ contact.fullname}}</h5>
+                <p class="card-text">{{ contact.message}}</p>
+                {% if contact.consulted == 0 %}
+                    <a href="{{ path('app_contact_answer', {'id' :  contact.id })}}" class="btn btn-outline-primary">Répondre</a>
+                {% else %}
+                    <p><strong>Vous avez répondu le {{ contact.updatedAt | date("d/m/Y à h:m")}}</strong></p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

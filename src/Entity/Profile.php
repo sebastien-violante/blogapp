@@ -2,9 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\ProfileRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProfileRepository;
 
 #[ORM\Entity(repositoryClass: ProfileRepository::class)]
 class Profile
@@ -24,7 +24,9 @@ class Profile
     private ?\DateTimeInterface $dateBirth = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $coverPicture = null;
+    private ?string $coverPicture = "/_assets/pictures/default-author.png";
+
+    private ?string $imageFile = null;
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
@@ -121,6 +123,30 @@ class Profile
     public function setUser(User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imageFile
+     *
+     * @return ?string
+     */
+    public function getImageFile(): ?string
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set the value of imageFile
+     *
+     * @param ?string $imageFile
+     *
+     * @return self
+     */
+    public function setImageFile(?string $imageFile): self
+    {
+        $this->imageFile = $imageFile;
 
         return $this;
     }

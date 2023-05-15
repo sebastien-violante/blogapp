@@ -10,6 +10,7 @@ class CategoryService {
     private $categoryRepository;
     private $requestStack;
 
+    // 
     public function __construct(CategoryRepository $categoryRepository, RequestStack $requestStack) {
         $this->categoryRepository = $categoryRepository;
         $this->requestStack = $requestStack;

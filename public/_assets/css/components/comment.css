@@ -1,28 +1,28 @@
-.comment-container {
-    background-color: rgb(196, 190, 190);
+.comment-container 
+{
+    background-color: var(--main-color);
     border-radius: 0.5em;
-    padding: 1em 3em;
+    padding: 0.5em;
 }
-
-.comment-container .comment {
+.comment-container .comment 
+{
     background-color: white;
     border-radius: 0.5em;
     padding: 0.5em;
     margin: 0.5em;
     position: relative
 }
-
-.comment-container .comment p{
-    font-style: italic;
-}
-
-.comment-container .comment i{
+.comment-container .comment i
+{
     position: absolute;
     top: 10%;
     left: 95%;
     color: green:
 }
-
+.comment-container .comment p
+{
+    font-style: italic;
+}
 .moving-like {
     position: absolute;
     animation: bounce 0.8s ease infinite;

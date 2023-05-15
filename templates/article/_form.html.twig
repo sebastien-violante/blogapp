@@ -21,12 +21,9 @@
             {% endif %}
         </div> 
     </div>
-    
-    
-    
-    <div class="flex">
-    <a class="btn btn-secondary w-25 m-2" href="{{ path('app_home') }}">Annuler</a>
-    <button class="btn btn-success w-25 m-2">{{ button_label|default('Save') }}</button>
+    <div class="flex justify-center my-2">
+        <a class="btn btn-outline-secondary w-25 m-2" href="{{ path('app_home') }}">Annuler</a>
+        <button class="btn btn-outline-secondary w-25 m-2">Mettre à jour</button>
     </div>
 {{ form_end(form) }}
 

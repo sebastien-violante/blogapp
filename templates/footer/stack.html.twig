@@ -3,8 +3,19 @@
 {% block title %}{{ parent()}} Stack et références{% endblock %}
 
 {% block body %}
-<div class="footerpage">
-    <h2 class="footerpage-title">Conditions générales d'utilisation du site</h2>
-    <p class="footerpage-content"></p>
-</div>
+    <div class="footerpage">
+        <h2 class="footerpage-title">Stack et références</h2>
+        <p class="footerpage-content">Ce site a été réalisé en suivant la formation d'Espero Akpoli, "Apprendre Symfony 
+        5 et 6 par un blog et un site e-commerce" (https://www.udemy.com/course/apprendre-symfony-en-creant-un-blog-et-un-site-e-commerce/). Plusieurs adaptations et ajouts ont été faits, concernant tout aussi
+        bien les fonctionnalités (ex : chargement de la photo de l'auteur, mise en place d'un formulaire de
+        recherche dans la navbar, implémentation d'un mailer fonctionnel...) que la mise en page et les couleurs.</p>
+        <p class="footerpage-content">Pour le développement, j'ai utilisé :</p>
+        <ul class="footerpage-content">
+            <li class="footer-li">- Visual Studio Code comme éditeur de code,</li>
+            <li>- Git et Github pour le versionning et l'hébergement du code,</li>
+            <li>- Symfony 6, Twig et Bootstrap,</li>
+            <li>- HTML5, CSS3, ES6,</li>
+            <li>- Plusieurs packages, dont espero (pour formater des dates), cocur (pour la génération de slugs), ckeditor (pour le formatage des champs de modification des articles)...</li>
+        </ul>
+    </div>
 {% endblock %}

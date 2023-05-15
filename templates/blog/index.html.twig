@@ -11,7 +11,6 @@
         <p style="color:#95d1b5;font-size:3em">🆂elon 🆅ous ?</p>
         <h4 class="mb-4"><strong>Le blog qui vous laisse la 🅿🅰🆁🅾🅻🅴...</strong></h4>
         {% if app.user %}
-        
             <h3>Bonjour {{ app.user.getFullName() }}</h3>
         {% endif %}
         <p class="intro mt-3">Sur ce site, vous pouvez écrire des articles à propos de sujets que vous maîtrisez, que vous voulez partager ou simplement
@@ -19,56 +18,54 @@
         le respect des conditions générales d'utilisation du site que vous pouvez <strong><a href="">consulter  ici</a></strong>).
         Besoin d'un petit coup de pouce pour utiliser ce site ? Pas de panique, tout est <strong><a href="">expliqué là !</a></strong>.</p>
     </div>
-    
     <div class="articles-infos my-5">
        <h5>Au {{ "now"|date("d/m/Y") }}, <strong>{{ articles|length }} articles</strong> sont disponibles</h5>
     </div>
     <div class="articles">
-    {% for article in articles %}
-        <a href="/article/{{ article.slug }}" class="article-item">
-            <div style="overflow:hidden; display:flex; align-items:center; justify-content:center" class="article-image">
-                <img 
-                src="{{ article.imageUrl }}"
-                alt="image de l'article {{ article.title }}">
-            </div>
-            <div class="article-details flex">
-                <div class="article-author-details">
-                    <div class="article-author-picture">
-                        {% if article.author.profile is null %}
-                            <img 
-                            src="/_assets/pictures/default_author.jpg" 
-                            alt="Image de profile de {{ article.author.fullname }}">
-                        {% else %}
-                            <img 
-                            src="{{ article.author.profile.picture }}" 
-                            alt="Image de profile de {{ article.author.fullname }}">
-                        {% endif %}
+        {% for article in articles %}
+            <a href="/article/{{ article.slug }}" class="article-item">
+                <div class="article-image">
+                    <img 
+                    src="{{ article.imageUrl }}"
+                    alt="image de l'article {{ article.title }}">
+                </div>
+                <div class="article-details flex">
+                    <div class="article-author-details">
+                        <div class="article-author-picture">
+                            {% if article.author.profile is null %}
+                                <img 
+                                src="/_assets/pictures/default_author.jpg" 
+                                alt="Image de profil de {{ article.author.fullname }}">
+                            {% else %}
+                                <img 
+                                src="{{ article.author.profile.coverpicture }}" 
+                                alt="Image de profil de {{ article.author.fullname }}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="article-content-details">
+                        <h2 class="article-title">{{ article.title }}</h2>
+                        <div class="article-createdAt">{{ article.fromNow }}</div>
                     </div>
                 </div>
-                <div class="article-content-details">
-                    <h2 class="article-title">{{ article.title }}</h2>
-                    <div class="article-createdAt">{{ article.fromNow }}</div>
-
-                </div>
-            </div>
-            
-            {% if article.comments|length != 0 %}
-                <div class="corner">
-                    <div class="ranking ms-2">
-                        {{article.comments|length }} <i class="bi bi-chat-text ml-1"></i>
+                {% if article.comments|length != 0 %}
+                    <div class="corner">
+                        <div class="ranking ms-2">
+                            {{article.comments|length }} <i class="bi bi-chat-text ml-1"></i>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
-            
-        </a>
-    {% endfor %}
+                {% endif %}
+                
+            </a>
+        {% endfor %}
     </div>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-$("img").on("error", function() {
-    $(this).attr("src", "/_assets/pictures/default_image.jpg");
-})
-</script>
+<a href="https://www.compteurdevisite.com" title="compteur pour blog"><img src="https://counter10.optistats.ovh/private/compteurdevisite.php?c=suwg8jps38jbe8p318qr4lfe9c414mzl" border="0" title="compteur pour blog" alt="compteur pour blog"></a><a src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></a>
 {% endblock %}
 
+{% block javascripts %}
+    <script>
+    $("img").on("error", function() {
+        $(this).attr("src", "/_assets/pictures/default_image.jpg");
+    })
+    </script>
+{% endblock %}

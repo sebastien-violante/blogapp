@@ -1,10 +1,10 @@
 <?php
 
-
 namespace App\Entity;
+
 use Cocur\Slugify\Slugify;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticleRepository;
 use EsperoSoft\DateFormat\DateFormat;
 use Doctrine\Common\Collections\Collection;
@@ -29,7 +29,7 @@ class Article
 
     #[ORM\Column(length: 255)]
     private ?string $imageUrl = "/_assets/pictures/default-image.png";
-
+    // property added to display current picture in the form
     private ?string $imageFile = null;
 
     #[ORM\ManyToOne(inversedBy: 'articles')]

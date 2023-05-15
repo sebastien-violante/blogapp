@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} Modifier mon profil{% endblock %}
+
+{% block body %}
+    <div class="">
+        <h2 class="form-title">Compléter ou modifier mon profil</h2>
+        {{ include('profile/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $("input[type='file']").change(function() {
+            var file = $(this).get(0).files[0];
+            if(file) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var img = `<img src='${reader.result}'/>`;
+                    $(".image-preview").html(img);
+                }
+                reader.readAsDataURL(file)
+            }
+            });
+        });
+    </script>
+{% endblock %}

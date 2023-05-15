@@ -3,41 +3,55 @@
 {% block title %} {{ parent() }} Catégorie : {{ category.name }} {% endblock %}
 
 {% block body %}
-    
     <div class="articles-infos mb-5">
         <h3>Articles de la catégorie <strong>{{ category.name }}</strong></h3>
-        <strong>{{ articles|length }}</strong> articles disponibles
-    </div>
-    <div class="articles">
-    {% for article in articles %}
-        <a href="/article/{{ article.slug }}" class="article-item">
-            <div class="article-image">
-                <img 
-                src="{{ article.imageUrl }}" 
-                alt="Image de l'article" {{ article.title }} >
-            </div>
-            <div class="article-details flex">
-                <div class="article-author-details">
-                    <div class="article-author-picture">
-                        {% if article.author.profile is null %}
-                            <img 
-                            src="/_assets/pictures/default_author.jpg" 
-                            alt="Image de profile de {{ article.author.fullname }}">
-                        {% else %}
-                            <img 
-                            src="{{ article.author.profile.picture }}" 
-                            alt="Image de profile de {{ article.author.fullname }}">
-                        {% endif %}
+        {% if articles|length == 0 %}
+            <p>Désolé, aucun article de cette catégorie n'a encore été rédigé !</p>
+            <img
+            class="blanckpageImg"
+            src="/_assets/pictures/blanckPage.jpg"
+            alt="Image d'une page blanche">
+            <p>Si vous souhaitez rédiger un article, vous devez d'abord vous inscrire <a href="{{ path('app_register')}}"><strong> ici </strong></a></p>
+            <p>Sinon, vous pouvez retourner à l'accueil, <a href="{{ path('app_home')}}"><strong> par là... </strong></a></p>
+        {% else %}
+            <p><strong>{{ articles|length }}</strong> articles disponibles</p>
+            <div class="articles">
+                {% for article in articles %}
+                    <a href="/article/{{ article.slug }}" class="article-item">
+                    <div class="article-image">
+                        <img 
+                        src="{{ article.imageUrl }}" 
+                        alt="Image de l'article" {{ article.title }} >
                     </div>
-                </div>
-                <div class="article-content-details">
-                    <h2 class="article-title">{{ article.title }}</h2>
-                    <div class="article-createdAt">{{ article.fromNow }}</div>
-
-                </div>
+                        <div class="article-details flex">
+                            <div class="article-author-details">
+                                <div class="article-author-picture">
+                                    {% if article.author.profile.coverPicture is null %}
+                                        <img 
+                                        src="/_assets/pictures/default_author.jpg" 
+                                        alt="Image de profile par défaut">
+                                    {% else %}
+                                        <img 
+                                        src="{{ article.author.profile.coverPicture }}" 
+                                        alt="Image de profile de {{ article.author.fullname }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="article-content-details">
+                                <h2 class="article-title">{{ article.title }}</h2>
+                                <div class="article-createdAt">{{ article.fromNow }}</div>
+                            </div>
+                        </div>
+                        {% if article.comments|length != 0 %}
+                            <div class="corner">
+                                <div class="ranking ms-2">
+                                    {{article.comments|length }} <i class="bi bi-chat-text ml-1"></i>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </a>
+                {% endfor %}
             </div>
-        </a>
-    {% endfor %}
-    </div>
-    
+        {% endif %}
+    </div>  
 {% endblock %}

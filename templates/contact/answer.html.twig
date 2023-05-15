@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} Répondons nous !{% endblock %}
+
+{% block body %}
+    <h2 class="form-title">Répondre à {{ contact.fullname }}</h2>
+    <div class="ajusted-form">
+        <div class="card my-2">
+            <div class="card-header">
+                {{ contact.createdAt | date("d/m/Y à h:m")}}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ contact.message}}</p>
+            </div>
+        </div>
+        {{ form_start(form)}}
+            {{ form_label(form.answer)}}
+            {{ form_widget(form.answer)}}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

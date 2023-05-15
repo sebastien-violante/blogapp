@@ -7,12 +7,11 @@ use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ArticleType extends AbstractType
 {
@@ -26,7 +25,6 @@ class ArticleType extends AbstractType
                 "label" => "Contenu",
                 /* Be carefull ! Because of use of CKEditor, need to declare this field not required/ but changed at the end of the course (session 102) */
                 "required" => true,
-                /* End of comment */
                 "attr" => [
                     "rows" => 20,
                 ],
@@ -45,19 +43,13 @@ class ArticleType extends AbstractType
                 "class" => Category::class,
                 "choice_label" => "name",
                 'multiple' => true,
-                /* Be carefull ! Add the attribute "by_reference" to be sure that data are stored in manty to many relation*/
+                /* Be very carefull ! Add the attribute "by_reference" to be sure that data are stored in many to many relation*/
                 "by_reference" => false,
                 /* End of comment */
                 'attr' => [
                     'class' => 'choices_categories'
-                ]
-                
+                ]    
             ])
-
-
-
-
-
         ;
     }
 

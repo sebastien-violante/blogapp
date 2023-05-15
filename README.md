@@ -24,3 +24,7 @@ composer require snilius/twig-sort-by-field
 
 Package to custom error pages
 composer require symfony/twig-pack
+
+Package to use SMTP mailer Sendgrid
+composer require symfony/sendgrid-mailer
+composer require sendgrid/sendgrid

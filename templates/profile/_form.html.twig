@@ -1,0 +1,27 @@
+<div class="ajusted-form">
+    {{ form_start(form) }}
+        <div class="flex">
+            <div class="image-preview">
+                <img 
+                src="{{ profile.coverPicture}}" 
+                alt="Image de l'article {{ user.fullname }}">
+            </div>
+            <div class="">
+                {% if required is defined  %}
+                    {{ form_errors(form.imageFile) }}
+                    {{ form_label(form.imageFile) }}
+                    {{ form_widget(form.imageFile, {attr:{required:required}}) }}
+                {% else %}
+                    {{ form_label(form.imageFile) }}
+                    {{ form_widget(form.imageFile) }}
+                {% endif %}
+            </div> 
+        </div>
+        <div class="birth-date">
+            {{ form_label(form.dateBirth) }}
+            {{ form_widget(form.dateBirth) }}
+        </div>
+            {{ form_label(form.description) }}
+            {{ form_widget(form.description) }}
+    {{ form_end(form) }}
+</div>

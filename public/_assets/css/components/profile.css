@@ -1,0 +1,20 @@
+.author-picture 
+{
+    width:100%;
+    min-height: 8rem;
+}
+.birth-date 
+{
+    width: 30%;
+    min-width: 250px;
+    margin: auto;
+}
+.image-author-preview 
+{
+    height: 8em;
+    width: 8em;
+    border-radius: 4em;
+    border: 1px solid grey;
+    overflow: hidden;
+}
+

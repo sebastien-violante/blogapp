@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Catégories{% endblock %}
+
+{% block body %}
+    <h2 class="form-title">Liste des catégories d'articles</h2>
+    <div class="ajusted-form">
+        <ol class="list-group list-group-numbered">
+        {% for category in categories %}
+            <li class="list-group-item">{{ category.name }}<a href="{{ path('app_category_delete', { 'slug' : category.slug }) }}"><i class="bi bi-trash-fill"></i></a></li>
+            <button onclick=
+        {% endfor %}
+        <button id="btn-category-form" class="btn btn-outline-secondary my-4">Ajouter une catégorie</button>
+        <div id="category-form" class="invisible">
+            {{ form_start(categoryForm)}}
+                {{ form_label(categoryForm.name)}}
+                {{ form_widget(categoryForm.name)}}
+            {{ form_end(categoryForm)}}
+        </div>
+        </ol>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        document.getElementById('btn-category-form').addEventListener('click', () => {
+            document.getElementById('category-form').classList ="";
+        })
+    </script>
+{% endblock %}

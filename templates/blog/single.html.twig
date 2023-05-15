@@ -3,30 +3,38 @@
 {% block title %}{{ parent() }} {{ article.title }} {% endblock %}
 
 {% block body %}
-
     <div class="single-article-container">
         <div class="single-article">
             <div style="overflow:hidden; display:flex; align-items:center; justify-content:center" class="article-image">
-                <img style="width: 100%" src="{{ article.imageUrl }}" alt="image de l'article {{ article.title }}">
+                <img 
+                style="width: 100%" 
+                src="{{ article.imageUrl }}" 
+                alt="image de l'article {{ article.title }}">
                 {% if likeNumber != 0 %} 
                     <div class="article-likes">Déjà {{ likeNumber }}<i class="bi bi-hand-thumbs-up mx-1"></i></div>
                 {% endif %}
             </div>
-            
             <div class="article-details flex">
-                <div class="article-author-details mx-1">
+                 <div class="article-author-details mx-1">
                     <div class="article-author-picture">
-                        {% if article.author.profile is null %}
+                        {% if article.author.profile.coverPicture is null %}
                             <img 
                             src="/_assets/pictures/default_author.jpg" 
-                            alt="Image de profile de {{ article.author.fullname }}"
-                            data-bs-toggle="popover" data-bs-title="L'auteur..."
-                            data-bs-content="{{ article.author.getFullName }}"
-                            >
+                            alt="image de profile par défaut">
                         {% else %}
                             <img 
-                            src="{{ article.author.profile.picture }}" 
-                            alt="Image de profile de {{ article.author.fullname }}">
+                            src="{{ article.author.profile.coverPicture }}" 
+                            alt="Image de profile de {{ article.author.fullname }}"
+                            data-bs-toggle="popover" data-bs-title="Qui est cet auteur ?"
+                            data-bs-content="
+                            Il s'appelle {{ article.author.getFullName }}.
+                            {% if article.author.profile.dateBirth is not null %}
+                            Il est né le {{ article.author.profile.dateBirth | date("d/m/Y") }}. 
+                            {% endif %}
+                            {% if article.author.profile.description is not null %}
+                            Il se définit comme celà : {{ article.author.profile.description }}. 
+                            {% endif %}
+                            ">
                         {% endif %}
                     </div>
                 </div>
@@ -36,8 +44,7 @@
                 </div>
                 <div class="article-categories mx-1">
                     {% for category in article.categories %}
-                    <a 
-                        type="button" 
+                    <a  type="button" 
                         class="btn btn-outline-secondary position-relative"
                         href="/category/{{ category.slug }}">
                         {{ category.name }}
@@ -51,8 +58,7 @@
             <div class="content">
                 {# COMMENT ! the filter "raw" is necessary to interprete html tags. If absent, tags are displayed #}
                 {{ article.content | raw }}
-            </div>
-               
+            </div>       
         </div>
         {% if comments|length > 0 %}
             <div class="comment-container">
@@ -64,8 +70,7 @@
                     </div>
                 {% endfor %}
             </div>
-            {% endif %}
-        
+        {% endif %}
         {% if article.author is same as app.user %}
             <div class="flex justify-center m-3">
                 <a class="btn btn-secondary w-25" href="{{ path('app_article_edit', {'id': article.id}) }}">Modifier mon article</a>
@@ -78,18 +83,20 @@
         <aside class="categories">
             <ul class="flex justify-center">
                 {% for category in app.session.get("categories") %}
-              <li><a class="btn btn-outline-secondary m-1" href="/category/{{ category.slug }}">{{ category.name }} ({{ category.articles|length }} art.)</a></li>
-            {% endfor %}
+                    <li><a class="btn btn-outline-secondary m-1" href="/category/{{ category.slug }}">{{ category.name }} ({{ category.articles|length }} art.)</a></li>
+                {% endfor %}
             </ul>
-        </aside>
-          
+        </aside>     
     </div>
-    </div>
+{% endblock %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-$("img").on("error", function() {
-    $(this).attr("src", "/_assets/pictures/default_image.jpg");
-})
-</script>
+{% block javascripts %}
+    {# script to use jquery #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {# script to display default image if the saved image has been deleted since saving #}
+    <script>
+    $("img").on("error", function() {
+        $(this).attr("src", "/_assets/pictures/default_image.jpg");
+    }  )
+    </script>
 {% endblock %}

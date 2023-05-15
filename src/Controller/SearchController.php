@@ -9,10 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController
 {
+    // The searchArticle method is used to find the articles which contain a world in their title or content
     #[Route('/search', name: 'app_search')]
-    public function index(ArticleRepository $articleRepository): Response
+    public function searchArticle(ArticleRepository $articleRepository): Response
     {
-        //dd($_POST['word-to-search']);
         $wordToSearch = $_POST['word-to-search'];
                 
         return $this->render('search/index.html.twig', [

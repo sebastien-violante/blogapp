@@ -13,9 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommentController extends AbstractController
-{
+{// The commentById method allows to write a comment about an article
     #[Route('/comment/{id}', name: 'app_comment')]
-    public function index(
+    public function commentById(
         Request $request,
         EntityManagerInterface $entityManagerInterface,
         ArticleRepository $articleRepository,
@@ -25,7 +25,6 @@ class CommentController extends AbstractController
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
-                
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCreatedAt(new DateTimeImmutable());
             $article = $articleRepository->findOneById($id);
@@ -35,6 +34,7 @@ class CommentController extends AbstractController
             
             return $this->redirectToRoute('app_home');
         }
+        
         return $this->renderForm('comment/index.html.twig', [
             'form' => $form,
         ]);

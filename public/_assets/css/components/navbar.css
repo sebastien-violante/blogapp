@@ -1,47 +1,18 @@
-
-.navbar {
+.btn-search {
+    width: 90px !important;
+    min-width: 90px !important;
+}
+.collapse .navbar-collapse 
+{
+    margin-left: 8em;
+}
+.container-fluid 
+{
     background-color: var(--main-color);
-    display: flex;
-    align-items: center;
-    padding-left: 40px;
-    padding-right: 20px;
-    max-width: 1400px;
-    margin:auto;
-    color: #1f1e1e !important;
-    height: 4em;
-} 
-
-.container-fluid {
-    background-color: var(--main-color);
-    margin-left: 4em;
+    margin-left: 1em;
 }
-
-.vertical-align {
-    line-height: 2em;
-    text-align: center;
-    margin: 0 !important;
-}
-
-.nav-link {
-    color: #1f1e1e !important;
-}
-
-.nav-item {
-    margin: 0 1em;
-}
-
-.nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
-
-.logo {
-    height: 40px;
-    margin: 0.5em;
-}
-
-.footer {
+.footer 
+{
     background: var(--main-color);
     min-height: 50px;
     width: 100%;
@@ -51,22 +22,61 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
-
-.footer a {
+.footer a 
+{
     margin: 0 2em;
 }
-
-.footer a:hover {
+.footer a:hover 
+{
     border-bottom: 1px solid black;
 }
-
-.collapse .navbar-collapse {
-    margin-left: 8em;
+.logo 
+{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
 }
-
-.btn-search {
-    width: 90px !important;
-    min-width: 90px !important;
+.navbar 
+{
+    background-color: var(--main-color);
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+    max-width: 1400px;
+    margin:auto;
+    color: #1f1e1e !important;
+    height: 4em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+} 
+.nav-item 
+{
+    margin: 0 1em;
 }
-
+.nav-item:hover 
+{
+    background-color: rgba(255, 255, 255, 0.5);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+.nav-link {
+    color: #1f1e1e !important;
+}
+.vertical-align 
+{
+    line-height: 2em;
+    text-align: center;
+    margin: 0 !important;
+}
+@media (max-width: 991px) { 
+    .form-navbar {
+        margin-bottom: 1em;
+    }
+    .container-fluid {
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}

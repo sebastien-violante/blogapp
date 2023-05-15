@@ -13,12 +13,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BlogController extends AbstractController
 {
+    // Categories are passed in session using the CategoryService to be available everywhere on the site
     public function __construct(CategoryService $categoryService) {
         $categoryService->updateSession();
     }
 
+    //The home method displays the home page
     #[Route('/', name: 'app_home')]
-    public function home(Request $request, ArticleRepository $articleRepository): Response
+    public function home(
+        Request $request,
+        ArticleRepository $articleRepository,
+        ): Response
     {
         // The findBy with the first null array allows to retrieve all the items and to sort them according to the creation date
         $articles = $articleRepository->findBy([], ['createdAt' => 'DESC']);
@@ -28,19 +33,22 @@ class BlogController extends AbstractController
             ]);
     }
     
-    
+    // The articleSingle method alloes to display one single article, identified by its slug (important sor SEO)
     #[Route('/article/{slug}', name: 'app_single_article')]
-    public function single(
+    public function articleSingle(
         ArticleRepository $articleRepository,
         string $slug,
-        CommentRepository $commentRepository): Response
+        CommentRepository $commentRepository,
+        ): Response
     {
         $article = $articleRepository->findOneBySlug($slug);
         $comments = $commentRepository->findByArticle($article);
+        // The constant likeNumber is created to display the number of likes given in comments. Isquote indicates that the article is liked
         $likeNumber = 0;
         foreach ($comments as $comment) {
             $likeNumber += $comment->isQuote();
         }
+
         return $this->render('blog/single.html.twig', [
             'article' => $article,
             'comments' => $commentRepository->findByArticle($article),
@@ -49,32 +57,23 @@ class BlogController extends AbstractController
         ]);
     }
 
+    // The article_by_category method retrieves and displays all the articles with the tag of the category
     #[Route('/category/{slug}', name: 'app_article_by_category')]
-    public function article_by_category(ArticleRepository $articleRepository, string $slug, CategoryRepository $categoryRepository): Response
+    public function article_by_category(
+        ArticleRepository $articleRepository,
+        string $slug,
+        CategoryRepository $categoryRepository
+        ): Response
     {
         $category = $categoryRepository->findOneBySlug($slug);
         $articles = [];
         if ($category) {
             $articles = $category->getArticles()->getValues();
         }
-        
+                
         return $this->render('blog/articles_by_category.html.twig', [
             'articles' => $articles,
             'category' => $category,
         ]);
     }
-
-    /* #[Route('/article/{slug}', name: 'app_single_article', requirements:[
-        'name' => "[a-z]{2,50}", // regex portant sur name : lettres entre a et z, entre 2 et 50 caractères
-        'id' => "[0-9]{1,4}",
-        ] )]
-    public function index($id, $name): Response
-    {
-        return $this->render('blog/index.html.twig', [
-            'controller_name' => 'BlogController',
-            'id' => $id,
-            'name' => $name,
-        ]);
-    } */
-
 }
