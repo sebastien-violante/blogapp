@@ -34,7 +34,7 @@
               {% if app.user.roles is defined and app.user.roles is not null %}
               {% if "ADM" in app.user.roles %}
               <div class="dropdown-divider"></div>
-              <li><a class="dropdown-item" href="{{ path('app_contact_list')}}"><strong>Gérer les contacts</strong></a></li>
+              <li><a class="dropdown-item" href="{{ path('app_contact_list')}}"><strong>Gérer les contacts <span class="badge rounded-pill bg-danger"> {{ app.session.get('messagesToReply') }}</span></strong></a></li>
             {% endif %}
             {% endif %}
         </ul>

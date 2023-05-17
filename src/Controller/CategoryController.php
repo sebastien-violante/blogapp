@@ -45,22 +45,26 @@ class CategoryController extends AbstractController
     // The categoryDelete method allows the deletion of a category name
     #[Route('/category/delete/{slug}', name: 'app_category_delete')]
     public function categoryDelete(
+        EntityManagerInterface $entityManagerInterface,
         CategoryRepository $categoryRepository,
         ArticleRepository $articleRepository,
         string $slug,
         ): Response
     {
-            
+        // At first, the category is removed from the category list for each article concerned    
         $category = $categoryRepository->findOneBySlug($slug);
-        
         $articles = [];
         if ($category) {
             $articles = $category->getArticles()->getValues();
         }
         foreach ($articles as $article) {
-            $category->removeArticle($article);
-            dd($category->getId(), $article->getId());
+            $article->removeCategory($category);
+            $entityManagerInterface->persist($article);
         }
+        // Then, the category itself is deleted
+        $entityManagerInterface->remove($category);
+        $entityManagerInterface->flush();
+    
         return $this->redirectToRoute('app_home');
         
     }

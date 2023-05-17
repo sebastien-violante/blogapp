@@ -34,6 +34,7 @@
                             {% if article.author.profile.description is not null %}
                             Il se définit comme celà : {{ article.author.profile.description }}. 
                             {% endif %}
+                            (Cliquez sur sa photo pour fermer...)
                             ">
                         {% endif %}
                     </div>
@@ -88,15 +89,13 @@
             </ul>
         </aside>     
     </div>
-{% endblock %}
 
-{% block javascripts %}
-    {# script to use jquery #}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    {# script to display default image if the saved image has been deleted since saving #}
-    <script>
-    $("img").on("error", function() {
-        $(this).attr("src", "/_assets/pictures/default_image.jpg");
-    }  )
-    </script>
+{# script to use jquery #}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{# script to display default image if the saved image has been deleted since saving #}
+<script>
+$("img").on("error", function() {
+    $(this).attr("src", "/_assets/pictures/default_image.jpg");
+}  )
+</script>
 {% endblock %}

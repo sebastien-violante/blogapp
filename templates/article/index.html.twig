@@ -4,7 +4,9 @@
 
 {% block body %}
     <h2 class="form-title">Liste des vos articles</h2>
-    <a class="btn btn-success mb-2 w-25" href="{{ path('app_article_new') }}">Rédiger un nouvel article</a>
+    <dic class="flex justify-center">
+        <a class="btn btn-success mb-2 w-25" href="{{ path('app_article_new') }}">Rédiger un nouvel article</a>
+    </div>
     {% for article in articles %}
         <table class="table">
             <tbody>

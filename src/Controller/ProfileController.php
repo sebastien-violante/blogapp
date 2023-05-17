@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Profile;
 use App\Form\ProfileType;
 use App\Service\ManageFile;
 use App\Repository\ProfileRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,7 +30,12 @@ class ProfileController extends AbstractController
     ): Response
     {
         $user = $this->getUser();
-        $profile = $profileRepository->findOneByUser($user);     
+        $profile = $profileRepository->findOneByUser($user); 
+        if(!$profile) {
+            $profile = new Profile();
+            $profile->setCreatedAt(new DateTimeImmutable());
+            $profile->setUser($user);
+        }; 
         $form = $this->createForm(ProfileType::class, $profile);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

@@ -60,12 +60,10 @@
         {% endfor %}
     </div>
 <a href="https://www.compteurdevisite.com" title="compteur pour blog"><img src="https://counter10.optistats.ovh/private/compteurdevisite.php?c=suwg8jps38jbe8p318qr4lfe9c414mzl" border="0" title="compteur pour blog" alt="compteur pour blog"></a><a src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></a>
-{% endblock %}
 
-{% block javascripts %}
-    <script>
-    $("img").on("error", function() {
-        $(this).attr("src", "/_assets/pictures/default_image.jpg");
-    })
-    </script>
+<script>
+$("img").on("error", function() {
+    $(this).attr("src", "/_assets/pictures/default_image.jpg");
+})
+</script>
 {% endblock %}

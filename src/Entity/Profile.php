@@ -24,7 +24,7 @@ class Profile
     private ?\DateTimeInterface $dateBirth = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $coverPicture = "/_assets/pictures/default-author.png";
+    private ?string $coverPicture = "/_assets/pictures/default_author.jpg";
 
     private ?string $imageFile = null;
 

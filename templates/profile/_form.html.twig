@@ -2,9 +2,15 @@
     {{ form_start(form) }}
         <div class="flex">
             <div class="image-preview">
-                <img 
-                src="{{ profile.coverPicture}}" 
-                alt="Image de l'article {{ user.fullname }}">
+                {% if profile is null %}
+                    <img 
+                    src="/_assets/pictures/default_author.jpg" 
+                    alt="image de profile par défaut">
+                {% else %}
+                    <img 
+                    src="{{ profile.coverPicture }}" 
+                    alt="Image de l'auteur">
+                {% endif %}
             </div>
             <div class="">
                 {% if required is defined  %}

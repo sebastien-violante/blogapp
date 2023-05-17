@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
             );
             $user->setCreatedAt(new DateTimeImmutable());
             // By default, the role "AUTHOR" is given to each new registered
-            $user->setRoles(["AUTHOR"]);
+            $user->setRoles(["ROLE_AUTHOR"]);
             $entityManager->persist($user);
             $entityManager->flush();
 
