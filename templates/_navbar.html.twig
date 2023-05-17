@@ -19,7 +19,7 @@
               <li><a class="dropdown-item" href="/category/{{ category.slug }}">{{ category.name }} ({{ category.articles|length }} art.)</a></li>
             {% endfor %}
             {% if app.user.roles is defined and app.user.roles is not null %}
-              {% if "ADM" in app.user.roles %}
+              {% if "ROLE_ADM" in app.user.roles %}
               <div class="dropdown-divider"></div>
               <li><a class="dropdown-item" href="/category"><strong>Modifier</strong></a></li>
             {% endif %}
@@ -32,7 +32,7 @@
           <ul class="dropdown-menu">
             <li class="nav-item"><a class="nav-link" href="/contact" >Par formulaire</a></li>
               {% if app.user.roles is defined and app.user.roles is not null %}
-              {% if "ADM" in app.user.roles %}
+              {% if "ROLE_ADM" in app.user.roles %}
               <div class="dropdown-divider"></div>
               <li><a class="dropdown-item" href="{{ path('app_contact_list')}}"><strong>Gérer les contacts <span class="badge rounded-pill bg-danger"> {{ app.session.get('messagesToReply') }}</span></strong></a></li>
             {% endif %}

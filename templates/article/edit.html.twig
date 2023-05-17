@@ -8,9 +8,7 @@
         {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
         {{ include('article/_delete_form.html.twig') }}
     </div>
-{% endblock %}
 
-{% block javascripts %}
 {# Script to use select2 #}
     <script>
         $(document).ready(function() {
@@ -29,6 +27,7 @@
         });
     </script>
     {# Script to use CKEditor #}
+    <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
             .create( document.querySelector( '#article_content' ) )

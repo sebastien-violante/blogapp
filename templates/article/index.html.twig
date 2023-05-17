@@ -7,59 +7,59 @@
     <dic class="flex justify-center">
         <a class="btn btn-success mb-2 w-25" href="{{ path('app_article_new') }}">Rédiger un nouvel article</a>
     </div>
-    {% for article in articles %}
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Numéro</th>
-                    <td>{{ article.id }}</td>
-                </tr>
-                <tr>
-                    <th>Titre</th>
-                    <td style="font-weight:bold">{{ article.title }}</td>
-                </tr>
-                <tr>
-                    <th>Référencement</th>
-                    <td>{{ article.slug }}</td>
-                </tr>
-                <tr>
-                    <th>Contenu</th>
-                    <td>
-                        <div class="article-content">{{ article.content | raw }}</div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Image</th>
-                    <td>
-                        <div class="img-edit">
-                            <img 
-                            src="{{ article.imageUrl }}" 
-                            alt="image de l'article numero {{ article.id }}">
-                        </div></td>
-                </tr>
-                <tr>
-                    <th>Rédigé </th>
-                    <td>{{ article.fromNow }}</td>
-                </tr>
-                <tr>
-                    <th>Mis à jour le</th>
-                    <td>{{ article.updatedAt ? article.updatedAt|date('d-m-Y à  H:i:s') : '' }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="flex">
-                            <a class="btn btn-outline-secondary w-20 mx-2" href="{{ path('app_single_article', {'slug': article.slug}) }}">Visualiser</a>
-                            <a class="btn btn-outline-secondary w-20 mx-2" href="{{ path('app_article_edit', {'id': article.id}) }}">Modifier</a>
-                            {{ include('article/_delete_form.html.twig') }}
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    {% endfor %}
-{% endblock %}
-
-{% block javascripts %}
+    <div class="ajusted-form">
+        {% for article in articles %}
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Numéro</th>
+                        <td>{{ article.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Titre</th>
+                        <td style="font-weight:bold">{{ article.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Référencement</th>
+                        <td>{{ article.slug }}</td>
+                    </tr>
+                    <tr>
+                        <th>Contenu</th>
+                        <td>
+                            <div class="article-content">{{ article.content | raw }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Image</th>
+                        <td>
+                            <div class="img-edit">
+                                <img 
+                                src="{{ article.imageUrl }}" 
+                                alt="image de l'article numero {{ article.id }}">
+                            </div></td>
+                    </tr>
+                    <tr>
+                        <th>Rédigé </th>
+                        <td>{{ article.fromNow }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mis à jour le</th>
+                        <td>{{ article.updatedAt ? article.updatedAt|date('d-m-Y à  H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div class="flex">
+                                <a class="btn btn-outline-secondary w-20 mx-2" href="{{ path('app_single_article', {'slug': article.slug}) }}">Visualiser</a>
+                                <a class="btn btn-outline-secondary w-20 mx-2" href="{{ path('app_article_edit', {'id': article.id}) }}">Modifier</a>
+                                {{ include('article/_delete_form.html.twig') }}
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+    
     <script>
         $('.article-content').readmore({ 
             speed: 10,

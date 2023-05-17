@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} À propos...{% endblock %}
+
+{% block body %}
+    <div class="ajusted-form content">
+        <h2 class="form-title">Quelques explications ?</h2>
+        <h3 class="form-title">Consulter et réagir</h3>
+        <p class="about">Vous pouvez consulter librement tous les articles présents sur ce site. Il vous suffit pour
+        cela d'aller sur la page d'accueil ou bien dans l'onglet catégorie de la barre de navigation</p>
+        <p>Chaque carte d'article indique son titre, son auteur , depuis combien de temps il a été rédigé et vous pourrez apercevoir
+        en bas à gauche de la carte un encart rose qui vous indique le nombre de commentaires qui ont été postés.</p>
+        <div class="flex justify-center">
+            <img class="explanation-picture" src="/_assets/pictures/explain-card.png">
+        </div>
+        <p>En cliquant sur l'image, vous pouvez consulter l'article. En bas de l'image, vous pouvez voir à nouveau son titre, son
+        auteur ainsi que sa date de rédaction, mais également la ou les catégories à laquelle (auxquelles) l'article est rattaché.</p>
+        <div class="flex justify-center">
+            <img class="explanation-picture" src="/_assets/pictures/explain-single-1.png">
+        </div>
+        <p>En cliquant sur la photo de l'auteur, vous verrez apparaître les détails qu'il a communiqués. Pour fermer la fenêtre, cliquez
+        à nouveau sur sa photo</p>
+        <div class="flex justify-center">
+            <img class="explanation-picture" src="/_assets/pictures/explain-single-2.png">
+        </div>
+        <p>Si vous n'êtes pas l'auteur de l'article, vous pouvez y réagir en cliquant sur le bouton réagir qui se trouve en bas
+        de celui-ci. Vous pouvez ainsi rédiger un commentaire en laissant votre nom ou votre pseudo, mais bien sûr dans le respect
+        des conditions générales d'utilisation qui sont rappelées sur le site</p>
+        <p>Sachez que votre commentaire apparaîtra alors en dessous de l'article à chaque consultation. Attention, une fois publié, votre
+        commentaire ne sera plus modifible. Vous ne pourrez pas non plus le supprimer</p>
+        <h3 class="form-title">Rédiger et publier</h3>
+        <p>Pour rédiger un article, vous devrez d'abord vous enregistrer sur le site, via l'onglet de connexion de la barre de navigation.
+        Vous pouvez créer un compte en fournissant une adresse mail ainsi q'un mot de passe</p>
+        <p>Une fois enregistré, vous êtes dirigé automatiquement vers la page de connexion dans laquelle vous devez saisier les identifiants
+        que vous avez choisis</p>
+        <p>Lorsque vous êtes connectés, votre nom ou pseudo apparaît en haut de la page d'accueil. Vous pouvez alors compléter votre
+        profil en cliquant sur l'onglet "Mon profil" dans la barre de navigation.
+        <div class="flex justify-center">
+            <img class="explanation-picture" src="/_assets/pictures/explain-profil.png">
+        </div>
+        <p>Par défaut votre image de profil est vide. Vous pouvez télécharger une nouvelle image. Attention, elle doit être d'un
+        format image standard (jpg, jpeg, png, webp) et d'une taille de 2Mo au maximum. Vous pouvez égalemet indiquer votre date de naissance
+        et vous décrire en quelques mots. Ces informations apparaîtront lorsqu'un utilisateur cliquera sur votre photo de profil
+        en consultant votre article.</p>
+        <p>Lorsque vous avez rédigé un article, vous pouvez à tout moment le modifier, en cliquant sur "Modifier mon article" en dessous
+        de celui-ci lorsque vous êtes sur sa page de consultation.</p>
+        <p>Vous avez également la possibilité de cliquer sur "Mes articles" dans la barre de navigation. Vous êtes alors redirigé(e) vers
+        la liste de vos articles. Dans cette liste, vous pouvez modifier ou supprimer un article</p>
+        <h3 class="form-title">Contacter</h3>
+        <p>Un formulaire de contact est disponible à partir de l'onglet "Contact > Par formulaire" de la barre de navigation. Il vous permet d'envoyer
+        un message à l'administrateur du site. Vous recevrez une réponse provenant du site rapidement.</p>
+    </div>
+    
+{% endblock %}
+
+

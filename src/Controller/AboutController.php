@@ -14,4 +14,11 @@ class AboutController extends AbstractController
     {
         return $this->render('about/index.html.twig');
     }
+
+    // The about method is used to link the page wich explains how to use the site
+    #[Route('/explain', name: 'app_explain')]
+    public function explanations(): Response
+    {
+        return $this->render('about/explain.html.twig');
+    }
 }

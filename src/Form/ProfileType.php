@@ -20,6 +20,7 @@ class ProfileType extends AbstractType
                 "label" => "Date de naissance" ])
             ->add('description', TextareaType::class, [
                 "label" => "Décrivez-vous en quelques lignes",
+                "required" => false,
                 "attr" => [
                     "rows" => 5,
                 ]

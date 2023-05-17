@@ -38,7 +38,6 @@ security:
         
         - { path: '^/account', roles: ROLE_AUTHOR }
         - { path: '^/profile', roles: ROLE_AUTHOR }
-        - { path: '^/comment', roles: ROLE_AUTHOR }
         - { path: '^/contact', roles: ROLE_AUTHOR }
         - { path: '^/category', roles: ROLE_ADM }
 

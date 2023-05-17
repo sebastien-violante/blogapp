@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CategoryController extends AbstractController
@@ -44,6 +45,7 @@ class CategoryController extends AbstractController
 
     // The categoryDelete method allows the deletion of a category name
     #[Route('/category/delete/{slug}', name: 'app_category_delete')]
+    #[IsGranted('ROLE_ADMIN')]
     public function categoryDelete(
         EntityManagerInterface $entityManagerInterface,
         CategoryRepository $categoryRepository,
@@ -65,7 +67,7 @@ class CategoryController extends AbstractController
         $entityManagerInterface->remove($category);
         $entityManagerInterface->flush();
     
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('app_category');
         
     }
 }
