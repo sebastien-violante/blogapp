@@ -19,6 +19,7 @@
         "sendgrid/sendgrid": "^8.0",
         "sensio/framework-extra-bundle": "^6.1",
         "snilius/twig-sort-by-field": "^0.1.5",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "6.1.*",
         "symfony/console": "6.1.*",
         "symfony/doctrine-messenger": "6.1.*",
