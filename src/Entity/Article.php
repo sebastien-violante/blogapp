@@ -28,7 +28,7 @@ class Article
     private ?string $content = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $imageUrl = "/_assets/pictures/default-image.png";
+    private ?string $imageUrl = "/_assets/pictures/default_image.jpg";
     // property added to display current picture in the form
     private ?string $imageFile = null;
 

@@ -44,12 +44,10 @@ class CategoryController extends AbstractController
     }
 
     // The categoryDelete method allows the deletion of a category name
-    #[Route('/category/delete/{slug}', name: 'app_category_delete')]
-    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/adm/category/delete/{slug}', name: 'app_category_delete')]
     public function categoryDelete(
         EntityManagerInterface $entityManagerInterface,
         CategoryRepository $categoryRepository,
-        ArticleRepository $articleRepository,
         string $slug,
         ): Response
     {

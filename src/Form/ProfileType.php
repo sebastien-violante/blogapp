@@ -9,7 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\DateType as TypeDateType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType as TypeDateType;
 
 class ProfileType extends AbstractType
 {
@@ -17,7 +17,8 @@ class ProfileType extends AbstractType
     {
         $builder
             ->add('dateBirth', TypeDateType::class, [
-                "label" => "Date de naissance" ])
+                "label" => "Date de naissance (jj-mm-aaaa)",
+                "format" => "ddMMyyyy" ])
             ->add('description', TextareaType::class, [
                 "label" => "Décrivez-vous en quelques lignes",
                 "required" => false,

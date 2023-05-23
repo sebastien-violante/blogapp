@@ -15,11 +15,11 @@
                 {% endif %}
             </div>
             <div class="article-details flex">
-                 <div class="article-author-details mx-1">
+                <div class="article-author-details mx-1">
                     <div class="article-author-picture">
                         {% if article.author.profile is null %}
                             <img 
-                            src="/_assets/pictures/default_author.jpg" 
+                            src="/_assets/pictures/default_author.webp" 
                             alt="image de profile par défaut">
                         {% else %}
                             <img 
@@ -32,7 +32,7 @@
                             Il est né le {{ article.author.profile.dateBirth | date("d/m/Y") }}. 
                             {% endif %}
                             {% if article.author.profile.description is not null %}
-                            Il se définit comme celà : {{ article.author.profile.description }}. 
+                            Il se définit comme cela : {{ article.author.profile.description }}. 
                             {% endif %}
                             (Cliquez sur sa photo pour fermer...)
                             ">

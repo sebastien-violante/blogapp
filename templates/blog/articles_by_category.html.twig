@@ -26,9 +26,9 @@
                         <div class="article-details flex">
                             <div class="article-author-details">
                                 <div class="article-author-picture">
-                                    {% if article.author.profile.coverPicture is null %}
+                                    {% if article.author.profile is null %}
                                         <img 
-                                        src="/_assets/pictures/default_author.jpg" 
+                                        src="/_assets/pictures/default_author.webp" 
                                         alt="Image de profile par défaut">
                                     {% else %}
                                         <img 

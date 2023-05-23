@@ -62,8 +62,7 @@ class ContactController extends AbstractController
     }
 
     // The contactList method allows to retrieve all the contacts send via the form contact
-    #[Route('/contact/list', name: 'app_contact_list')]
-    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/adm/contact/list', name: 'app_contact_list')]
     public function contactList(
         ContactRepository $contactRepository,
         ): Response
@@ -74,8 +73,7 @@ class ContactController extends AbstractController
     }
 
     // The contactAnswer method allows te answer someone who send a message via the form contact
-    #[Route('/contact/answer/{id}', name: 'app_contact_answer')]
-    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/adm/contact/answer/{id}', name: 'app_contact_answer')]
     public function contactAnswer(
         Request $request,
         ContactRepository $contactRepository,

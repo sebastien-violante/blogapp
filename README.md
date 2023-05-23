@@ -27,6 +27,8 @@
     - access the list of messages left via the form and reply to the message by sending an email.
 
 **  The site is developed in symfony 6 and PHP 8.1, with some additional libraries (including webpack and other js packages)
+
+** To developp this app, I've followed the course made by Espero AKPOLI and avaliable notably on Udemy platform. I've also added several features. Thank's for your further comments !
  
 ## Getting Started
 

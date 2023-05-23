@@ -38,8 +38,9 @@ security:
         
         - { path: '^/account', roles: ROLE_AUTHOR }
         - { path: '^/profile', roles: ROLE_AUTHOR }
-        - { path: '^/contact', roles: ROLE_AUTHOR }
-        - { path: '^/category', roles: ROLE_ADM }
+        - { path: '^/contact/list', roles: ROLE_ADM }
+        - { path: '^/contact/answer', roles: ROLE_ADM }
+        - { path: '^/adm', roles: ROLE_ADM }
 
 when@test:
     security:

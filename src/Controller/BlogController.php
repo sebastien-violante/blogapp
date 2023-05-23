@@ -60,7 +60,6 @@ class BlogController extends AbstractController
     // The article_by_category method retrieves and displays all the articles with the tag of the category
     #[Route('/category/{slug}', name: 'app_article_by_category')]
     public function article_by_category(
-        ArticleRepository $articleRepository,
         string $slug,
         CategoryRepository $categoryRepository
         ): Response
