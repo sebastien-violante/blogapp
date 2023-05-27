@@ -58,13 +58,17 @@
                 </tbody>
             </table>
         {% endfor %}
-    </div>
-    
+    </div>        
+{% endblock %}
+
+{% block javascripts %}
+    {# Script to extend the article content to be more readable #}
     <script>
+        console.log("readmore block");
         $('.article-content').readmore({ 
             speed: 10,
             moreLink: '<a class="readmore" href="#">» Voir plus</a>',
             lessLink: '<a class="readmore" href="#">» Voir moins</a>',
-            collapsedHeight: 200 });
+            collapsedHeight: 300 });
     </script>
 {% endblock %}
