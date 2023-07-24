@@ -38,6 +38,7 @@ class RegistrationController extends AbstractController
             $user->setRoles(["ROLE_AUTHOR"]);
             $entityManager->persist($user);
             $entityManager->flush();
+            
 
             return $this->redirectToRoute('app_login');
         }
